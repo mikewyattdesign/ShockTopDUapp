@@ -1,0 +1,25 @@
+{
+  "name": "AB Shock Top Discover Unfiltered Quiz",
+  "version": "0.0.0",
+  "authors": [
+    "Adam Bowen <adambowen@group360.com",
+    "Eric Suh <ericsuh@group360.com>"
+  ],
+  "description": "Facebook Quiz for Discover Unfiltered contest",
+  "main": "app.rb",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1",
+    "bootstrap": "bootstrap-sass-official#3.1.1+2",
+    "console-polyfill": "0.1.1",
+    "respond": "1.4.2"
+  }
+}

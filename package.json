@@ -1,0 +1,20 @@
+{
+  "name": "ab-shock-top-discover-unfiltered-quiz",
+  "version": "0.0.0",
+  "description": "Facebook Quiz for Discover Unfiltered contest",
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:group360/ab-shock-top-discover-unfiltered-quiz.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "gulp-ruby-sass": "0.5.0",
+    "gulp-concat": "2.2.0",
+    "gulp-uglify": "0.3.0",
+    "gulp": "3.6.2",
+    "gulp-jshint": "1.6.1",
+    "karma": "0.12.16",
+    "karma-jasmine": "0.1.5",
+    "karma-phantomjs-launcher": "~0.1.4"
+  }
+}
