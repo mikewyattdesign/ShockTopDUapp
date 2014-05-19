@@ -1,1 +1,57 @@
 @import "bootstrap";
+
+img {
+    width: 100%;
+}
+
+form {
+    padding: 50px 150px;
+}
+
+.container {
+    position: relative;
+    width: 810px;
+    height: 1024px;
+    background: url('/images/background.jpg') no-repeat;
+    background-size: 100%;
+}
+
+.wood-container-age {
+    background: url('/images/wood.png') no-repeat;
+    background-size: 100%;
+    height: 1035px;
+
+    h1 {
+        font-size: 80px;
+        color: white;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 50px;
+    }
+}
+
+.wood-container-landing {
+    background: url('/images/wood-lg.png') no-repeat;
+    background-size: 100%;
+    height: 1035px;
+}
+
+.DU-logo {
+    width: 40%;
+    margin: auto;
+}
+
+.age-gate {
+    .wood-container {
+        padding: 50px 100px;
+        text-align: center;
+    }
+}
+
+.landing {
+    .wood-container {
+        background: url('/images/wood-lg.png');
+    }
+}

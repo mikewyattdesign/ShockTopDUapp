@@ -20,7 +20,7 @@ var paths = {
     styles: {
         application: 'assets/stylesheets/**/*.scss',
         vendor: [
-            'vendor/bootstrap-sass-official/vendor/assets/stylesheets/'
+            'vendor/bootstrap/vendor/assets/stylesheets/'
         ]
     }
 };
