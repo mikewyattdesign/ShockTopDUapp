@@ -8,6 +8,10 @@ form {
     padding: 50px 150px;
 }
 
+.start {
+    display: none;
+}
+
 .container {
     position: relative;
     width: 810px;
@@ -16,10 +20,8 @@ form {
     background-size: 100%;
 }
 
-.wood-container-age {
+.age {
     background: url('/images/wood.png') no-repeat;
-    background-size: 100%;
-    height: 1035px;
 
     h1 {
         font-size: 80px;
@@ -32,8 +34,15 @@ form {
     }
 }
 
-.wood-container-landing {
+.landing {
     background: url('/images/wood-lg.png') no-repeat;
+}
+
+.start {
+    background: url('/images/wood.png') no-repeat;
+}
+
+.wood-container {
     background-size: 100%;
     height: 1035px;
 }
