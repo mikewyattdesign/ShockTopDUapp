@@ -4,11 +4,7 @@ img {
     width: 100%;
 }
 
-form {
-    padding: 50px 150px;
-}
-
-.start {
+.start, .questions, .end, .adventure, .social {
     display: none;
 }
 
@@ -18,28 +14,32 @@ form {
     height: 1024px;
     background: url('/images/background.jpg') no-repeat;
     background-size: 100%;
+    color: white;
 }
 
 .age {
     background: url('/images/wood.png') no-repeat;
 
-    h1 {
-        font-size: 80px;
-        color: white;
+    fieldset {
         text-align: center;
+        padding: 40px 0px;
     }
 
-    h2 {
-        font-size: 50px;
+    h1 {
+        font-size: 36px;
+        color: white;
+        margin-bottom: 40px;
     }
 }
 
-.landing {
+.landing, .questions, .adventure, .social {
     background: url('/images/wood-lg.png') no-repeat;
+    padding: 80px 150px;
 }
 
-.start {
+.start, .end {
     background: url('/images/wood.png') no-repeat;
+    padding: 80px 150px;
 }
 
 .wood-container {
@@ -50,17 +50,4 @@ form {
 .DU-logo {
     width: 40%;
     margin: auto;
-}
-
-.age-gate {
-    .wood-container {
-        padding: 50px 100px;
-        text-align: center;
-    }
-}
-
-.landing {
-    .wood-container {
-        background: url('/images/wood-lg.png');
-    }
 }
