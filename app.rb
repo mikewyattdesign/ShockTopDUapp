@@ -11,7 +11,7 @@ require './lib/facebook'
 require './lib/age_gate'
 require './lib/request_data_extractor'
 
-# Main class for the BeerFestivals application
+# Main class for the DiscoverUnfilteredQuiz application
 class DiscoverUnfilteredQuiz < Sinatra::Base
     register Sinatra::MultiRoute
 
