@@ -4,6 +4,7 @@ require 'bundler'
 Bundler.setup :default, ENV['RACK_ENV']
 require 'sinatra/base'
 require 'sinatra/multi_route'
+require 'newrelic_rpm'
 require 'koala'
 require 'rollbar'
 

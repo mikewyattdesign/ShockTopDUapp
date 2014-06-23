@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.1.2'
 
 # Development environment variable management
 gem 'dotenv', '0.11.1'
@@ -21,6 +21,12 @@ gem 'koala', '1.9.0'
 
 # Error monitoring
 gem 'rollbar', '0.12.17'
+
+# Application monitoring
+gem 'newrelic_rpm', '3.8.1.221'
+
+# xml parsing
+gem 'nokogiri', '1.6.1'
 
 group :test do
     # Testing framework
