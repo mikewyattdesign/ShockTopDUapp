@@ -14,7 +14,9 @@ var paths = {
         vendor: [
             'vendor/respond/dest/respond.src.js',
             'vendor/jquery/dist/jquery.js',
-            'vendor/console-polyfill/index.js'
+            'vendor/console-polyfill/index.js',
+            'vendor/angular/angular.js',
+            'vendor/angular-animate/angular-animate.js'
         ]
     },
     styles: {
