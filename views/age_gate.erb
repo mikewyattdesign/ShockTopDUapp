@@ -1,11 +1,16 @@
-<div class="row">
-    <div class="DU-logo">
-        <img src="/images/discover-unfiltered-logo.png" alt="">
+<div class="DU-logo">
+    <img src="/images/discover-unfiltered-logo.png" alt="Shocktop logo in a compass">
+</div>
+<div class="wood-container age">
+    <div class="row">
+        <h1>YOU MUST BE AT LEAST 21 YEARS OF AGE TO TAKE THE QUIZ.<br/>PLEASE ENTER YOUR DATE OF BIRTH TO CONTINUE.</h1>
     </div>
-    <div class="wood-container age">
-        <form class="form-inline" role="form">
-            <fieldset>
-                <h1>You must be at least 21 years of Age to take the quiz.<br/>Please enter your date of birth to continue.</h1>
+    <div class="row">
+        <label><img src="/images/birthday.png" alt="Birthday"></label>
+    </div>
+    <form name = "ageGateForm" role="form">
+        <div class="row date-of-birth">
+            <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                     <select name="month" class="form-control">
                         <option value="">Month</option>
@@ -14,7 +19,8 @@
                         <% end %>
                     </select>
                 </div>
-
+            </div>
+            <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                     <select name="day" class="form-control">
                         <option value="">Day</option>
@@ -23,7 +29,8 @@
                         <% end %>
                     </select>
                 </div>
-
+            </div>
+            <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                     <select name="year" class="form-control">
                         <option value="">Year</option>
@@ -32,11 +39,16 @@
                         <% end %>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg">Enter Site</button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4">
+                <!-- <button type="submit" class="btn btn-primary btn-lg">Enter Site</button> -->
+                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" ng-click="navCtrl.goToEntry()">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bottle-container">
+    <img src="/images/beer-bottles.png" alt="Shocktop Bottles">
 </div>

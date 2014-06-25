@@ -1,9 +1,5 @@
 @import "bootstrap";
-
-img {
-    width: 100%;
-}
-
+/*
 .start, .questions, .end, .adventure, .social {
     display: none;
 }
@@ -16,20 +12,8 @@ img {
     background-size: 100%;
     color: white;
 }
-
 .age {
     background: url('/images/wood.png') no-repeat;
-
-    fieldset {
-        text-align: center;
-        padding: 40px 0px;
-    }
-
-    h1 {
-        font-size: 36px;
-        color: white;
-        margin-bottom: 40px;
-    }
 }
 
 .landing, .questions, .adventure, .social {
@@ -45,9 +29,80 @@ img {
 .wood-container {
     background-size: 100%;
     height: 1035px;
+    padding: 100px 125px;
+
+    h1 {
+        font-size: 25px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
 }
 
 .DU-logo {
     width: 40%;
     margin: auto;
+}
+*/
+
+/********************************/
+
+img {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    /*width: 1536px;
+    height: 2048px;*/
+    width: 810px;
+    height: 1024px;
+    background: url('../images/background.jpg') no-repeat; /* Fall back */
+    background-position: bottom center;
+    background-size: 100%, 100%;
+}
+
+.submit-btn {
+    width: 100%%;
+    cursor: pointer;
+}
+
+.DU-logo {
+    width: 38%;
+    margin: 40px auto -50px auto;
+}
+
+/* Wood backgrounds */
+.age {
+    background: url('/images/wood.png') no-repeat;
+    padding: 100px 90px;
+}
+.landing, .questions, .adventure, .social {
+    background: url('/images/wood-lg.png') no-repeat;
+    padding: 80px 150px;
+}
+.start, .end {
+    background: url('/images/wood.png') no-repeat;
+    padding: 80px 150px;
+}
+
+.wood-container {
+    background-size: 100%;
+    height: 1035px;
+
+    h1 {
+        text-transform: uppercase;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        word-spacing: 0.1;
+        font-weight: bold;
+    }
+}
+
+.bottle-container {
+    position: absolute;
+    width: 35%;
+    bottom: 0;
+    left: 0;
 }
