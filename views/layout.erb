@@ -3,6 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html ng-app="unfiltered">
     <head>
         <meta charset="utf-8">
         <title>Discover Unfiltered</title>
@@ -22,6 +23,7 @@
 
         <link rel="stylesheet" href="/stylesheets/application.css">
         <meta name="viewport" content="width=device-width, user-scalable=no">
+        <script src="/javascripts/application.min.js"></script>
     </head>
     <body class="<%= request.path_info.gsub(/\//, '') %>">
         <% if ENV['FACEBOOK_APP_ID'] %>
@@ -29,10 +31,7 @@
             <div id="facebook-app-id"><%= ENV['FACEBOOK_APP_ID'] %></div>
         <% end %>
 
-        <div class="container">
-            <%= yield %>
-        </div>
+        <%= yield %>
 
-        <script src="/javascripts/application.min.js"></script>
     </body>
 </html>

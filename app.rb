@@ -40,12 +40,8 @@ class DiscoverUnfilteredQuiz < Sinatra::Base
         !value.nil? && !value.empty?
     end
 
-    route :get, :post, '/' do
-        if old_enough?
-            erb :index
-        else
-            erb :age_gate
-        end
+    route :post, :get, '/' do
+        erb :index
     end
 
     error do

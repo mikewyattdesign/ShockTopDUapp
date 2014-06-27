@@ -7,6 +7,9 @@ var sass   = require('gulp-ruby-sass');
 var paths = {
     scripts: {
         application: [
+            'assets/javascripts/angular/app.js',
+            'assets/javascripts/angular/config.js',
+            'assets/javascripts/angular/controllers/*.js',
             'assets/javascripts/application.js',
             'assets/javascripts/modules/*.js',
             'assets/javascripts/init.js'
@@ -16,19 +19,23 @@ var paths = {
             'vendor/jquery/dist/jquery.js',
             'vendor/console-polyfill/index.js',
             'vendor/angular/angular.js',
+            'vendor/angular-resource/angular-resource.js',
+            'vendor/angular-route/angular-route.js',
             'vendor/angular-animate/angular-animate.js'
         ]
     },
     styles: {
         application: 'assets/stylesheets/**/*.scss',
         vendor: [
-            'vendor/bootstrap/vendor/assets/stylesheets/'
+            'vendor/bootstrap/vendor/assets/stylesheets/',
+            'vendor/bourbon/dist/'
         ]
     }
 };
 
 gulp.task('scripts', function () {
     return gulp.src(paths.scripts.vendor.concat(paths.scripts.application))
+        .pipe(uglify().on('error', function(e) { console.log('x07', e.message); return this.end();}))
         .pipe(concat('application.min.js'))
         .pipe(uglify({ outSourceMap: false }))
         .pipe(gulp.dest('public/javascripts/'));
