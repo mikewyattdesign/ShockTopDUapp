@@ -6,25 +6,24 @@
         <label><img src="/images/birthday.png" alt="Birthday"></label>
     </div>
     <form name="ageGateForm" role="form">
-        <div class="row date-of-birth">
+        <div class="row date-of-birth" ng-controller="GateController as GateCtrl">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select id="month" name="month" class="form-control">
+                    <select name="month" class="form-control" ng-model="ageMonth" ng-options="i for i in GateCtrl.months">
                         <option value="">Month</option>
-                        <!-- USE ANGULAR TO POPULATE THESE OPTIONS -->
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="day" class="form-control">
+                    <select name="day" class="form-control" ng-model="ageDay" ng-options="i for i in GateCtrl.days">
                         <option value="">Day</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="year" class="form-control">
+                    <select name="year" class="form-control" ng-model="ageYear" ng-options="i for i in GateCtrl.years">
                         <option value="">Year</option>
                     </select>
                 </div>
