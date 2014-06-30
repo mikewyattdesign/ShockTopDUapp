@@ -38,8 +38,6 @@ angular.module('unfiltered')
                 controllerAs: 'navCtrl',
                 templateUrl: '/views/social.html'
             })
-
-
             .otherwise({
                 redirectTo: '/'
             });

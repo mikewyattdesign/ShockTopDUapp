@@ -5,25 +5,25 @@
     <div class="row">
         <label><img src="/images/birthday.png" alt="Birthday"></label>
     </div>
-    <form name="ageGateForm" role="form">
-        <div class="row date-of-birth" ng-controller="GateController as GateCtrl">
+    <form name="ageGateForm" role="form" ng-controller="GateController as gateCtrl">
+        <div class="row date-of-birth">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="month" class="form-control" ng-model="ageMonth" ng-options="i for i in GateCtrl.months">
+                    <select name="month" class="form-control" ng-model="gateCtrl.birthday.month" ng-options="i for i in gateCtrl.months">
                         <option value="">Month</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="day" class="form-control" ng-model="ageDay" ng-options="i for i in GateCtrl.days">
+                    <select name="day" class="form-control" ng-model="gateCtrl.birthday.day" ng-options="i for i in gateCtrl.days">
                         <option value="">Day</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="year" class="form-control" ng-model="ageYear" ng-options="i for i in GateCtrl.years">
+                    <select name="year" class="form-control" ng-model="gateCtrl.birthday.year" ng-options="i for i in gateCtrl.years">
                         <option value="">Year</option>
                     </select>
                 </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="row">
             <div class="col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4">
-                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-click="navCtrl.goToPath('/landing')">
+                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-click="gateCtrl.checkDate()">
                 <!-- <a id="submit-btn" href=""><img src="/images/submit.png" alt="" ng-click="navCtrl.goToPath('/landing')"></a> -->
             </div>
         </div>
