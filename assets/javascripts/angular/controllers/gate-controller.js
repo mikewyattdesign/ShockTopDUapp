@@ -1,5 +1,5 @@
 angular.module('unfiltered')
-    .controller('GateController', [function() {
+    .controller('GateController', ['$location', function($location) {
         this.months = [];
         this.days = [];
         this.years = [];
@@ -21,9 +21,15 @@ angular.module('unfiltered')
         this.checkDate = function () {
             if (this.birthday.year !== undefined && this.birthday.month !== undefined && this.birthday.day !== undefined) {
                 var date = moment([parseInt(this.birthday.year), parseInt(this.birthday.month)-1, parseInt(this.birthday.day)]);
-                return date.isBefore(this.legalDate);
+                return date.isValid() && date.isBefore(this.legalDate);
             } else {
                 return false;
+            }
+        }
+
+        this.leaveAgeGate = function () {
+            if (this.checkDate()) {
+                $location.path('/landing');
             }
         }
     }]);
