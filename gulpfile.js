@@ -18,6 +18,7 @@ var paths = {
             'vendor/respond/dest/respond.src.js',
             'vendor/jquery/dist/jquery.js',
             'vendor/console-polyfill/index.js',
+            'vendor/moment/moment.js',
             'vendor/angular/angular.js',
             'vendor/angular-resource/angular-resource.js',
             'vendor/angular-route/angular-route.js',
