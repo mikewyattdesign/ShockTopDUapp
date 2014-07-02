@@ -18,20 +18,10 @@ angular.module('unfiltered')
                 controllerAs: 'navCtrl',
                 templateUrl: '/views/start.html'
             })
-            .when('/questions', {
+            .when('/video', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
-                templateUrl: '/views/questions.html'
-            })
-            .when('/finish', {
-                controller: 'NavigationController',
-                controllerAs: 'navCtrl',
-                templateUrl: '/views/finish.html'
-            })
-            .when('/adventure', {
-                controller: 'NavigationController',
-                controllerAs: 'navCtrl',
-                templateUrl: '/views/adventure.html'
+                templateUrl: '/views/video.html'
             })
             .when('/social', {
                 controller: 'NavigationController',

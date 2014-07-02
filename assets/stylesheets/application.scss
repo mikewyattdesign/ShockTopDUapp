@@ -25,7 +25,28 @@ img {
     background: url('/images/wood-lg.png') no-repeat;
     padding: 80px 150px 60px;
 }
-.start, .end {
+.start {
+    background: url('/images/wood-journey.png') no-repeat;
+    #start-btn {
+        position: absolute;
+        left: (724px / 2);
+        top: (826px / 2);
+        width: (160px / 2);
+        height: (160px / 2);
+    }
+}
+.video {
+    background: url('/images/wood-video.png') no-repeat;
+    #record-btn {
+        position: absolute;
+        left: (724px / 2);
+        top: (716px / 2);
+        width: (160px / 2);
+        height: (160px / 2);
+
+    }
+}
+.end {
     background: url('/images/wood.png') no-repeat;
     padding: 80px 150px 60px;
 }
