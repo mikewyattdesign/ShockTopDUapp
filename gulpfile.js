@@ -9,6 +9,7 @@ var paths = {
         application: [
             'assets/javascripts/angular/app.js',
             'assets/javascripts/angular/config.js',
+            'assets/javascripts/angular/services/*.js',
             'assets/javascripts/angular/controllers/*.js',
             'assets/javascripts/application.js',
             'assets/javascripts/modules/*.js',

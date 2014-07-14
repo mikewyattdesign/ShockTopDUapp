@@ -8,10 +8,15 @@ angular.module('unfiltered')
                 controllerAs: 'navCtrl',
                 templateUrl: 'views/age-gate.html'
             })
-            .when('/landing', {
+            .when('/entry', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
-                templateUrl: 'views/landing.html'
+                templateUrl: 'views/entry.html'
+            })
+            .when('/terms', {
+                controller: 'NavigationController',
+                controllerAs: 'navCtrl',
+                templateUrl: 'views/terms.html'
             })
             .when('/start', {
                 controller: 'NavigationController',

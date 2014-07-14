@@ -1,5 +1,5 @@
-<!-- Landing Page -->
-<div class="wood-container landing">
+<!-- Entry Page -->
+<div class="wood-container entry">
     <h1>Enter Your Info for a Change to Win</h1>
 
     <form role="form">
@@ -23,7 +23,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="text" class="form-control" placeholder="Phone Number">
+                    <input type="tel" class="form-control" placeholder="Phone Number">
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="text" class="form-control" placeholder="Email Address">
+                    <input type="email" class="form-control" placeholder="Email Address">
                 </div>
             </div>
         </div>
@@ -41,17 +41,17 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Birthday</label>
-                    <input type="text" class="form-control" placeholder="Birthday">
+                    <input type="date" class="form-control date-picker" placeholder="Birthday">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-sm-offset-6">
-                <p class="submit-text">By Submitting I agree to the <a class="terms" href="">terms and conditions.</a></p>
+                <p class="submit-text">By Submitting I agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">terms and conditions.</a></p>
                 <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-click="navCtrl.goToPath('/start')">
                 <!-- <a id="submit-btn" href=""><img src="/images/submit.png" alt="" ng-click="navCtrl.goToPath('/start')"></a> -->
             </div>
         </div>
     </form>
 </div>
-<!-- Landing Page -->
+<!-- Entry Page -->

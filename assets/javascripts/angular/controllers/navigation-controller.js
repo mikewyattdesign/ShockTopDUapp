@@ -1,11 +1,18 @@
 angular.module('unfiltered')
-    .controller('NavigationController', ['$location', '$rootScope', function ($location, $rootScope) {
-        'use strict';
+    .controller('NavigationController',
+        ['$log', '$location', '$rootScope',
+        function ($log, $location, $rootScope) {
+            'use strict';
 
-        $rootScope.location = $location;
+            if (!($rootScope.oldEnough)) {
+                $log.info('not old enough');
+                $location.path('/');
+            }
 
-        // Page navigation
-        this.goToPath = function (newPath) {
-            $location.path(newPath);
-        };
-    }]);
+            $rootScope.location = $location;
+
+            // Page navigation
+            this.goToPath = function (newPath) {
+                $location.path(newPath);
+            };
+        }]);
