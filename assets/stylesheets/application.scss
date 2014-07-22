@@ -53,6 +53,9 @@ input[type='checkbox']{
 button {
     width: 90%;
     color: #000;
+    vertical-align: middle;
+    background: transparent;
+    border: none;
 }
 
 .container {
@@ -95,14 +98,23 @@ button {
 
 #fb-btn {
     padding: 0;
-    /*display: inline;*/
+    width: 100px;
+}
+
+.fb-btn {
+    padding: 0;
     width: 100px;
 }
 
 .submit-text {
     color: #FFF;
     vertical-align: middle;
-    padding: 0 auto;
+    padding: 0;
+    display: block;
+    span {
+        vertical-align: middle;
+        height: 4px;
+    }
 }
 
 .scroll-box {
@@ -126,6 +138,19 @@ button {
 
 .alert {
     width: 94%;
+}
+
+.legal-container {
+    position: absolute;
+    width: 60%;
+    bottom: 0;
+    left: 250px;
+
+    p {
+        text-align: left;
+        color: white;
+        font-size: 8px;
+    }
 }
 
 /** Form validation **/
