@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="DU-logo" ng-if="location.path () == '/' || location.path () == '/start' || location.path () == '/finish'">
+    <div class="DU-logo">
         <img src="/images/discover-unfiltered-logo.png" alt="Shocktop logo in a compass">
     </div>
 
     <ng-view class="view-animate"></ng-view>
 
-    <div class="bottle-container" ng-if="location.path () == '/' || location.path () == '/start' || location.path () == '/finish'">
+    <div class="bottle-container" ng-if="location.path () !== '/fb-authorize' || location.path () !== '/terms'">
         <img src="/images/beer-bottles.png" alt="Shocktop Bottles">
     </div>
 </div>

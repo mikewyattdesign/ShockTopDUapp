@@ -8,30 +8,30 @@ angular.module('unfiltered')
                 controllerAs: 'navCtrl',
                 templateUrl: 'views/age-gate.html'
             })
-            .when('/entry', {
-                controller: 'NavigationController',
-                controllerAs: 'navCtrl',
-                templateUrl: 'views/entry.html'
-            })
             .when('/terms', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
                 templateUrl: 'views/terms.html'
             })
-            .when('/start', {
+            .when('/fb-authorize', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
-                templateUrl: '/views/start.html'
+                templateUrl: 'views/fb-authorize.html'
             })
-            .when('/video', {
+            .when('/upload', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
-                templateUrl: '/views/video.html'
+                templateUrl: 'views/upload.html'
             })
-            .when('/social', {
+            .when('/journey', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',
-                templateUrl: '/views/social.html'
+                templateUrl: '/views/journey.html'
+            })
+            .when('/thanks', {
+                controller: 'NavigationController',
+                controllerAs: 'navCtrl',
+                templateUrl: '/views/thanks.html'
             })
             .otherwise({
                 redirectTo: '/'

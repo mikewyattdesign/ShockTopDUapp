@@ -37,7 +37,7 @@ var paths = {
 
 gulp.task('scripts', function () {
     return gulp.src(paths.scripts.vendor.concat(paths.scripts.application))
-        .pipe(uglify().on('error', function(e) { console.log('x07', e.message); return this.end();}))
+        .pipe(uglify().on('error', function(e) { console.log('x07', e.message, e.fileName, e.lineNumber); return this.end();}))
         .pipe(concat('application.min.js'))
         .pipe(uglify({ outSourceMap: false }))
         .pipe(gulp.dest('public/javascripts/'));

@@ -1,18 +1,46 @@
 angular.module('unfiltered')
     .controller('NavigationController',
-        ['$log', '$location', '$rootScope',
-        function ($log, $location, $rootScope) {
+        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService',
+        function ($log, $location, $timeout, $scope, $rootScope, EntryService) {
             'use strict';
 
-            if (!($rootScope.oldEnough)) {
-                $log.info('not old enough');
-                $location.path('/');
-            }
+            // if (!($rootScope.oldEnough)) {
+            //     $log.info('not old enough');
+            //     $location.path('/');
+            // }
 
             $rootScope.location = $location;
+
+            // After entry is saved, redirect
+            $scope.$on('entrySaved', function () {
+                // redirect to the entry page
+                $timeout(function () {
+                    $location.path('/entry');
+                }, (5*1000)); // timeout delay is ms
+            });
 
             // Page navigation
             this.goToPath = function (newPath) {
                 $location.path(newPath);
             };
+
+            // Entry Creation
+            this.createEntry = function () {
+                if (EntryService.create($scope.newEntry)) {
+                    $location.path('/journey');
+                } else {
+                    $location.path('/');
+                }
+            }
+
+            // Check birthday is legal
+            this.checkDate = function () {
+                var date = moment();
+                var legal_date = moment().subtract('years', 21);
+                if (typeof $scope.newEntry !== 'undefined') {
+                    date = moment($scope.newEntry.dob);
+                }
+                return date.isBefore(legal_date);
+            }
+
         }]);

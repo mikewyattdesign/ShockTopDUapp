@@ -1,37 +1,37 @@
-<div class="wood-container age-gate">
-    <div class="row">
-        <h1>YOU MUST BE AT LEAST 21 YEARS OF AGE TO TAKE THE QUIZ.<br/>PLEASE ENTER YOUR DATE OF BIRTH TO CONTINUE.</h1>
-    </div>
-    <div class="row">
-        <label><img src="/images/birthday.png" alt="Birthday"></label>
-    </div>
-    <form name="ageGateForm" role="form" ng-controller="GateController as gateCtrl">
-        <div class="row date-of-birth">
-            <div class="col-sm-4 col-md-4">
+<div class="wood-container blank">
+    <h1>You could win the Journey of a lifetime.</h1>
+    <p text-center>You must be of legal drinking age to enter this site.</p>
+    <form name="entryForm" role="form" novalidate>
+        <div class="row">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
                 <div class="form-group">
-                    <select name="month" class="form-control" ng-model="gateCtrl.birthday.month" ng-options="i for i in gateCtrl.months">
-                        <option value="">Month</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                    <select name="day" class="form-control" ng-model="gateCtrl.birthday.day" ng-options="i for i in gateCtrl.days">
-                        <option value="">Day</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                    <select name="year" class="form-control" ng-model="gateCtrl.birthday.year" ng-options="i for i in gateCtrl.years">
-                        <option value="">Year</option>
-                    </select>
+                    <label for="birthday">
+                        Date of Birth
+                        <!-- <img src="images/birthday.png" alt="Birthday"> -->
+                    </label>
+                    <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="newEntry.dob" required>
+                    <div class="alert alert-danger" ng-if="entryForm.birthday.$dirty && !navCtrl.checkDate()">
+                        Sorry, you must be 21 years old or older to enter.
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4">
-                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-click="gateCtrl.leaveAgeGate()">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                <div class="form-group">
+                    <label for="terms">
+                        <input type="checkbox" class="terms-checkbox" name="terms" id="terms" value="" ng-model="newEntry.terms" required>
+                        By submitting I agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a>.
+                    </label>
+                    <div class="alert alert-danger" ng-if="entryForm.terms.$dirty && !newEntry.terms">
+                        Please agree to the Official Rules.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-disabled="!navCtrl.checkDate() || !newEntry.terms" ng-click="navCtrl.createEntry()">
             </div>
         </div>
     </form>

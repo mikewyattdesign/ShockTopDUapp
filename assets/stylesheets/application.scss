@@ -1,84 +1,141 @@
 @import "bootstrap";
 @import "bourbon";
+@import "mixins.scss";
 
-img {
+$invalid-red: #FA787E;
+$valid-green: #78FA89;
+$font-family: Anton, sans-serif;
+/* default font size = 14px */
+
+body {
+    font-family: $font-family;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+img, input {
     width: 100%;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+
+p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+label {
+    font-size: 1.8em;
+    font-weight: bold;
+    a {
+        color: #FFF;
+        text-decoration: underline;
+    }
+}
+
+input[type='checkbox']{
+    cursor: pointer;
+    margin: 0;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+}
+
+button {
+    width: 90%;
+    color: #000;
 }
 
 .container {
     position: relative;
-    width: 810px;
-    height: 1010px;
+    width: 57.857142857em; /* 810px / 14px */
+    height: 72.142857143em; /* 1010px / 14px */
     background: url('/images/background.jpg') no-repeat;
-    background-position: bottom center;
     background-size: 100%, 100%;
-}
-
-/* Wood backgrounds */
-.age-gate {
-    background: url('/images/wood.png') no-repeat;
-    padding: 100px 90px;
-}
-.entry,  .social {
-    background: url('/images/wood-lg.png') no-repeat;
-    padding: 80px 150px 60px;
-}
-.start {
-    background: url('/images/wood-journey.png') no-repeat;
-    #start-btn {
-        position: absolute;
-        left: (724px / 2);
-        top: (826px / 2);
-        width: (160px / 2);
-        height: (160px / 2);
-    }
-}
-.video {
-    background: url('/images/wood-video.png') no-repeat;
-    #record-btn {
-        position: absolute;
-        left: (724px / 2);
-        top: (716px / 2);
-        width: (160px / 2);
-        height: (160px / 2);
-
-    }
-}
-.end {
-    background: url('/images/wood.png') no-repeat;
-    padding: 80px 150px 60px;
-}
-
-.wood-container {
-    background-size: 100%;
-    height: 1010px;
-
-    h1 {
-        text-transform: uppercase;
-        font-size: 20px;
-        color: white;
-        text-align: center;
-        word-spacing: 0.1;
-        font-weight: bold;
-    }
-}
-
-.submit-btn {
-    width: 100%%;
-    cursor: pointer;
 }
 
 .DU-logo {
     width: 38%;
-    margin: 40px auto -50px auto;
+    margin: 20px auto -15px auto;
 }
-
 
 .bottle-container {
     position: absolute;
     width: 35%;
-    bottom: 0;
-    left: 0;
+    bottom: 0px;
+    left: 0px;
+}
+
+/* Wood backgrounds */
+.wood-container {
+    margin: 0px auto;
+    padding: 50px 70px 70px;
+}
+
+.blank {
+    background: url('/images/wood.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/**************************************************************/
+
+.progress {
+    width: 75%;
+    margin: 5px auto;
+}
+
+#fb-btn {
+    padding: 0;
+    /*display: inline;*/
+    width: 100px;
+}
+
+.submit-text {
+    color: #FFF;
+    vertical-align: middle;
+    padding: 0 auto;
+}
+
+.scroll-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #FFF;
+    padding: 5px;
+    width: 100%;
+    /*height: 72%;*/
+    height: 475px;
+    margin: 5% 0% 4%;
+    overflow-y: scroll;
+    /*border: 1px solid;*/
+    table, th, td {
+        padding: 1px 3px;
+        border: 1px solid;
+    }
+    #terms-btn {
+        right: 0px;
+    }
+}
+
+.alert {
+    width: 94%;
+}
+
+/** Form validation **/
+.form-control.ng-invalid.ng-dirty {
+    border-color: $invalid-red;
+    border-width: 2px;
+}
+.form-control.ng-valid.ng-dirty {
+    border-color: $valid-green;
+    border-width: 2px;
 }
 
 /** ANIMATIONS **/
