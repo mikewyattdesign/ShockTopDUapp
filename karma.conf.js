@@ -20,7 +20,7 @@ module.exports = function(config) {
       'vendor/console-polyfill/index.js',
       'assets/javascripts/application.js',
       'assets/javascripts/modules/*.js',
-      'spec/unit/*.js'
+      'spec/client/**/*.js'
     ],
 
 

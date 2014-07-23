@@ -31,15 +31,4 @@ gem 'nokogiri', '1.6.1'
 group :test do
     # Testing framework
     gem 'rspec', '2.14.1'
-
-    # Library for feature testing
-    gem 'capybara', '2.2.1'
-end
-
-group :development do
-    # Utility that watches files and runs tasks
-    gem 'guard', '2.6.1'
-
-    # Plugin for Guard that integrates with Rspec
-    gem 'guard-rspec', '4.2.9'
 end
