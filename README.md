@@ -13,6 +13,7 @@ Facebook app quiz for Shock Top Discover Unfiltered Contest.
 
 1. Run `$ npm install` in the project root.
 1. Run `$ bundle install` in the project root.
+1. Run `./node_modules/protractor/bin/webdriver-manager update`
 
 ## Development
 
