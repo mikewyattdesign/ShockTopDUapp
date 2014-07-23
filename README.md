@@ -17,8 +17,9 @@ Facebook app quiz for Shock Top Discover Unfiltered Contest.
 
 ## Development
 
-1. Run `$ gulp watch` to auto-compile your assets as you develop and to
-   serve the application to the browser as http://localhost:5000
+1. Run `$ gulp watch` to auto-compile your assets and run tests on the
+   client and server as you develop and to serve the application to the
+   browser as http://localhost:5000
 
 Assets are compiled from the /assets directory and thrown into the public/
 directory.
