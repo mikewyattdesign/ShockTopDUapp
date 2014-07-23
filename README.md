@@ -7,10 +7,12 @@ Facebook app quiz for Shock Top Discover Unfiltered Contest.
     * production: https://du-quiz.herokuapp.com
 * Bitbucket URL: https://bitbucket.org/group360/ab-shock-top-discover-unfiltered-quiz
 * JIRA Agile URL: https://group360.atlassian.net/secure/RapidBoard.jspa?rapidView=76
+* Confluence Space URL: https://group360.atlassian.net/wiki/display/DU
 
 ## Setup
 
 1. Run `$ npm install` in the project root.
+1. Run `$ bundle install` in the project root.
 
 ## Development
 
