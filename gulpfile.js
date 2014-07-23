@@ -3,6 +3,7 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sass   = require('gulp-ruby-sass');
+var exec   = require('child_process').exec;
 
 var paths = {
     scripts: {
@@ -57,9 +58,29 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/stylesheets'));
 });
 
+gulp.task('server', function () {
+    var server = exec('foreman start', function (error, stdout, stderr) {
+        if (error) {
+            console.error('exec error:', error);
+        } else if (stderr) {
+            console.error(stderr);
+        }
+        console.log(stdout);
+    });
+    server.stdout.on('data', function (message) {
+        console.log(message);
+    });
+    server.stderr.on('data', function (error) {
+        console.error(error);
+    });
+    return server;
+});
+
 gulp.task('default', ['jshint', 'scripts', 'styles']);
 
 gulp.task('watch', function () {
+    gulp.start('server');
+
     gulp.watch(paths.styles.application, ['styles']);
     gulp.watch(paths.styles.vendor, ['styles']);
     gulp.watch(paths.scripts.application, ['jshint', 'scripts']);
