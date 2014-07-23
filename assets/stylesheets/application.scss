@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "bourbon";
-@import "mixins.scss";
+/*@import "mixins.scss";*/
+@import "animations.scss";
 
 $invalid-red: #FA787E;
 $valid-green: #78FA89;
@@ -8,33 +9,37 @@ $font-family: Anton, sans-serif;
 /* default font size = 14px */
 
 body {
-    font-family: $font-family;
+    font: normal 100% $font-family;
     color: rgba(255, 255, 255, 0.8);
-}
-
-img, input {
-    width: 100%;
+    background: url('/images/blue-wood.png') repeat;
+    background-size: 100%, 100%;
+    background-position: bottom center;
 }
 
 h1 {
     text-transform: uppercase;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     text-align: center;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 1.333333333em;
 }
 
 
 p {
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
 }
 
+img,
+input {
+    max-width: 100%;
+}
+
 label {
-    font-size: 1.8em;
+    font-size: 1.2em;
     font-weight: bold;
     a {
         color: #FFF;
@@ -44,10 +49,7 @@ label {
 
 input[type='checkbox']{
     cursor: pointer;
-    margin: 0;
-    width: 13px;
-    height: 13px;
-    vertical-align: middle;
+    width: 1em;
 }
 
 button {
@@ -58,52 +60,58 @@ button {
     border: none;
 }
 
+
 .container {
     position: relative;
-    width: 57.857142857em; /* 810px / 14px */
-    height: 72.142857143em; /* 1010px / 14px */
-    background: url('/images/background.jpg') no-repeat;
+    width: 100%;
+    background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
 }
 
 .DU-logo {
-    width: 38%;
-    margin: 20px auto -15px auto;
+    width: 35%;
+    margin: 5% auto 2.5%;
 }
 
 .bottle-container {
-    position: absolute;
+    position: fixed;
     width: 35%;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0%;
+    left: 0%;
 }
 
-/* Wood backgrounds */
+.legal-container {
+    position: fixed;
+    width: 55%;
+    bottom: 0;
+    left: 35%;
+
+    p {
+        text-align: left;
+        font-size: 6pt;
+    }
+}
+
 .wood-container {
-    margin: 0px auto;
-    padding: 50px 70px 70px;
-}
-
-.blank {
     background: url('/images/wood.png') no-repeat;
     background-size: 100% 100%;
+    padding: 10% 15%;
 }
 
 /**************************************************************/
 
-.progress {
-    width: 75%;
-    margin: 5px auto;
+.form-group {
+    margin: 0%;
 }
 
-#fb-btn {
-    padding: 0;
-    width: 100px;
+.progress {
+    width: 75%;
+    margin: 0% auto;
 }
 
 .fb-btn {
     padding: 0;
-    width: 100px;
+    width: 5em;
 }
 
 .submit-text {
@@ -111,46 +119,23 @@ button {
     vertical-align: middle;
     padding: 0;
     display: block;
-    span {
-        vertical-align: middle;
-        height: 4px;
-    }
 }
 
 .scroll-box {
     background-color: rgba(0, 0, 0, 0.3);
     color: #FFF;
-    padding: 5px;
+    padding: 0.5em;
     width: 100%;
-    /*height: 72%;*/
-    height: 475px;
+    height: 20em;
     margin: 5% 0% 4%;
     overflow-y: scroll;
-    /*border: 1px solid;*/
-    table, th, td {
-        padding: 1px 3px;
-        border: 1px solid;
-    }
     #terms-btn {
         right: 0px;
     }
 }
 
 .alert {
-    width: 94%;
-}
-
-.legal-container {
-    position: absolute;
-    width: 60%;
-    bottom: 0;
-    left: 250px;
-
-    p {
-        text-align: left;
-        color: white;
-        font-size: 8px;
-    }
+    width: 100%;
 }
 
 /** Form validation **/
@@ -163,7 +148,7 @@ button {
     border-width: 2px;
 }
 
-/** ANIMATIONS **/
+/* Animations */
 .view-animate.ng-enter, .view-animate.ng-leave {
   @include transition-delay (0.8s);
   @include transition (all ease-in-out 0.6s);
@@ -194,4 +179,5 @@ button {
 .animate-if.ng-enter.ng-enter-active {
   opacity:1;
 }
-/****************/
+
+@import "media.scss";
