@@ -9,6 +9,7 @@ angular.module('unfiltered')
             this.months = [];
             this.days = [];
             this.years = [];
+            this.birthday = {};
             this.legalDate = moment().subtract('years', 21);
 
             // Populate date arrays
@@ -24,6 +25,9 @@ angular.module('unfiltered')
 
             // create and check if it is valid date
             this.validDate = function () {
+                console.log($scope.newEntry.birthday.year);
+                console.log($scope.newEntry.birthday.month);
+                console.log($scope.newEntry.birthday.day);
                 if (typeof $scope.newEntry.birthday.year === 'undefined' ||
                     typeof $scope.newEntry.birthday.month === 'undefined' ||
                     typeof $scope.newEntry.birthday.day === 'undefined') {
