@@ -24,13 +24,4 @@ angular.module('unfiltered')
             this.goToPath = function (newPath) {
                 $location.path(newPath);
             };
-
-            // // Entry Creation
-            // this.createEntry = function () {
-            //     if (EntryService.create($scope.newEntry)) {
-            //         $location.path('/journey');
-            //     } else {
-            //         $location.path('/');
-            //     }
-            // }
         }]);

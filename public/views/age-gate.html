@@ -1,68 +1,68 @@
 <div class="wood-container">
-    <h1>You could win the Journey of a lifetime.</h1>
-    <p text-center ng-if="!oldEnough">You must be of legal drinking age to enter this site.</p>
-    <form name="ageGateForm" role="form" ng-controller="GateController as gateCtrl" ng-submit="this.leaveAgeGate()" novalidate>
-        <!-- <p>
-            {{ gateCtrl.createValidDate() }}
-            {{ !gateCtrl.isLegalDate() }}
-        </p> -->
-        <!-- Date Picker -->
-        <label for="birthday">
-            Date of Birth
-        </label>
-        <div class="row date-of-birth hidden-xs hidden-sm">
-            <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                    <select name="month" class="form-control" ng-model="ageGateForm.month" ng-options="month for month in gateCtrl.months">
-                        <option value="">Month</option>
-                    </select>
+    <div ng-controller="GateController as gateCtrl">
+        <h1>You could win the Journey of a lifetime.</h1>
+        <p text-center ng-if="!oldEnough">You must be of legal drinking age to enter this site.</p>
+        <form name="ageGateForm" role="form" ng-submit="gateCtrl.leaveAgeGate()" novalidate>
+            <!-- Date Picker -->
+            <div class="date-container" ng-if="!oldEnough">
+                <label for="birthday">
+                    Date of Birth
+                </label>
+                <div class="row date-of-birth hidden-xs hidden-sm">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <select name="month" class="form-control" ng-model="ageGateForm.month" ng-options="month for month in gateCtrl.months">
+                                <option value="">Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <select name="day" class="form-control" ng-model="ageGateForm.day" ng-options="day for day in gateCtrl.days">
+                                <option value="">Day</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <select name="year" class="form-control" ng-model="ageGateForm.year" ng-options="year for year in gateCtrl.years">
+                                <option value="">Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row date-of-birth hidden-md hidden-lg">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="ageGateForm.date" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- Legal Age Alert -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="alert alert-danger" ng-if="gateCtrl.createValidDate() && !gateCtrl.isLegalDate()">
+                            Sorry, you must be 21 years old or older to enter.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                    <select name="day" class="form-control" ng-model="ageGateForm.day" ng-options="day for day in gateCtrl.days">
-                        <option value="">Day</option>
-                    </select>
+            <!-- Terms and Agreement checkbox -->
+            <div class="form-group">
+                <label for="terms">
+                    <input type="checkbox" class="terms-checkbox" name="terms" id="terms" value="false" ng-model="ageGateForm.terms" required>
+                    By submitting I agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a>.
+                </label>
+                <div class="alert alert-danger" ng-if="!ageGateForm.terms">
+                    Please agree to the Official Rules.
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                    <select name="year" class="form-control" ng-model="ageGateForm.year" ng-options="year for year in gateCtrl.years">
-                        <option value="">Year</option>
-                    </select>
+            <!-- Submit button -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-disabled="!gateCtrl.isLegalDate() || !ageGateForm.terms">
                 </div>
             </div>
-        </div>
-        <div class="row date-of-birth hidden-md hidden-lg">
-            <div class="col-sm-12 col-md-12">
-                <div class="form-group">
-                    <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="ageGateForm.date" required>
-                </div>
-            </div>
-        </div>
-        <!-- Legal Age Alert -->
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <div class="alert alert-danger" ng-if="gateCtrl.createValidDate() && !gateCtrl.isLegalDate()">
-                    Sorry, you must be 21 years old or older to enter.
-                </div>
-            </div>
-        </div>
-        <!-- Terms and Agreement checkbox -->
-        <div class="form-group">
-            <label for="terms">
-                <input type="checkbox" class="terms-checkbox" name="terms" id="terms" value="false" ng-model="ageGateForm.terms" required>
-                By submitting I agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a>.
-            </label>
-            <div class="alert alert-danger" ng-if="!ageGateForm.terms">
-                Please agree to the Official Rules.
-            </div>
-        </div>
-        <!-- Submit button -->
-        <div class="row">
-            <div class="col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4">
-                <input type="image" src="/images/submit.png" alt="Submit" class="submit-btn" href="" ng-disabled="!gateCtrl.isLegalDate() || !ageGateForm.terms" ng-click="gateCtrl.leaveAgeGate()">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

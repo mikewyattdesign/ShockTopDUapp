@@ -3,6 +3,7 @@ angular.module('unfiltered')
         ['$location', '$scope', '$rootScope',
         function ($location, $scope, $rootScope) {
 
+            // $rootScope.oldEnough = true;
             $rootScope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
             // Set new entry dateOfBirth if old enough
@@ -31,6 +32,11 @@ angular.module('unfiltered')
 
             // create a date object from inputs
             this.createValidDate = function () {
+                // create date date for mobile
+                if (typeof $scope.ageGateForm.date !== 'undefined') {
+                    this.date = moment($scope.ageGateForm.date);
+                    return true;
+                }
                 // create date date for desktop
                 if (typeof $scope.ageGateForm.year === 'number' &&
                     typeof $scope.ageGateForm.month === 'number' &&
@@ -39,11 +45,6 @@ angular.module('unfiltered')
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
                     return this.date.isValid();
-                }
-                // create date date for mobile
-                else if (typeof $scope.ageGateForm.date !== 'undefined') {
-                    this.date = moment($scope.ageGateForm.date);
-                    return true;
                 }
                 return false;
             }
@@ -59,6 +60,7 @@ angular.module('unfiltered')
 
             this.leaveAgeGate = function () {
                 if (this.isLegalDate()) {
+                    $rootScope.oldEnough = true;
                     $location.path('/journey');
                 }
             }
