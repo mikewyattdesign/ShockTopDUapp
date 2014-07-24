@@ -11,6 +11,15 @@ angular.module('unfiltered')
 
             $rootScope.location = $location;
 
+            $scope.oe = $("meta[name='old_enough']").attr('content') === "true";
+
+            // Set new entry dob if old enough
+            if ($scope.oe) {
+                    $scope.newEntry = {};
+                    $scope.newEntry.dob = "07/28/1986";
+            }
+
+
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
                 // redirect to the entry page
