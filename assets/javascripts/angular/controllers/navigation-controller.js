@@ -24,12 +24,12 @@ angular.module('unfiltered')
                 $location.path(newPath);
             };
 
-            // // Entry Creation
-            // this.createEntry = function () {
-            //     if (EntryService.create($scope.newEntry)) {
-            //         $location.path('/journey');
-            //     } else {
-            //         $location.path('/');
-            //     }
-            // }
+            // Entry Creation
+            this.createEntry = function () {
+                if (EntryService.create($scope.newEntry)) {
+                    $location.path('/video');
+                } else {
+                    $location.path('/');
+                }
+            }
         }]);

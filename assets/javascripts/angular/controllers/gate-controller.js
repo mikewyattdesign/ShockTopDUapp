@@ -1,14 +1,14 @@
 angular.module('unfiltered')
     .controller('GateController',
-        ['$location', '$rootScope',
-        function ($location, $rootScope){
+        ['$location', '$scope', '$rootScope',
+        function ($location, $scope, $rootScope){
 
             $rootScope.oldEnough = false;
 
+            this.date = moment();
             this.months = [];
             this.days = [];
             this.years = [];
-            this.birthday = {};
             this.legalDate = moment().subtract('years', 21);
 
             // Populate date arrays
@@ -22,24 +22,37 @@ angular.module('unfiltered')
                 this.years.push(i);
             }
 
-            // create and check date is legal
-            this.checkDate = function () {
-                var date = moment();
-                if (typeof this.birthday.year !== 'undefined' &&
-                    typeof this.birthday.month !== 'undefined' &&
-                    typeof this.birthday.day !== 'undefined') {
-                    date = moment([parseInt(this.birthday.year), parseInt(this.birthday.month)-1, parseInt(this.birthday.day)]);
+            // create and check if it is valid date
+            this.validDate = function () {
+                if (typeof $scope.newEntry.birthday.year === 'undefined' ||
+                    typeof $scope.newEntry.birthday.month === 'undefined' ||
+                    typeof $scope.newEntry.birthday.day === 'undefined') {
+                    return false;
+                } else {
+                    this.date = moment([parseInt($scope.newEntry.birthday.year),
+                                    parseInt($scope.newEntry.birthday.month)-1,
+                                    parseInt($scope.newEntry.birthday.day)]);
+                    return this.date.isValid();
                 }
-                $rootScope.oldEnough = date.isValid() && date.isBefore(this.legalDate);
-                return $rootScope.oldEnough
             }
 
-            // // Check birthday is legal
-            // this.checkDate = function () {
-            //     if (typeof $scope.newEntry !== 'undefined') {
-            //         date = moment($scope.newEntry.dob);
-            //     }
-            // }
+            // create and check date is legal
+            this.checkSelectDate = function () {
+                if (this.validDate()) {
+                    $rootScope.oldEnough = this.date.isBefore(this.legalDate);
+                }
+                return $rootScope.oldEnough;
+            }
+
+            // Check birthday is legal
+            this.checkDate = function () {
+                var date = moment();
+                // var legalDate = moment().subtract('years', 21);
+                if (typeof $scope.newEntry !== 'undefined') {
+                    date = moment($scope.newEntry.dob);
+                }
+                return date.isBefore(this.legalDate);
+            }
 
             this.leaveAgeGate = function () {
                 if (this.checkDate()) {

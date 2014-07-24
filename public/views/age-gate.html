@@ -3,39 +3,45 @@
     <p text-center>You must be of legal drinking age to enter this site.</p>
     <form name="ageGateForm" role="form" ng-controller="GateController as gateCtrl" novalidate>
         <!-- Date Picker -->
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label for="birthday">
                 Date of Birth
             </label>
             <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="newEntry.dob" required>
-            <div class="alert alert-danger" ng-if="ageGateForm.birthday.$dirty && !navCtrl.checkDate()">
+
+            <div class="alert alert-danger" ng-if="ageGateForm.birthday.$dirty && !gateCtrl.checkDate()">
                 Sorry, you must be 21 years old or older to enter.
             </div>
-        </div> -->
+        </div>
+        <br />
         <div class="row date-of-birth">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="month" class="form-control" ng-model="gateCtrl.birthday.month" ng-options="i for i in gateCtrl.months">
+                    <select name="month" class="form-control" ng-model="newEntry.birthday.month" ng-options="i for i in gateCtrl.months">
                         <option value="">Month</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="day" class="form-control" ng-model="gateCtrl.birthday.day" ng-options="i for i in gateCtrl.days">
+                    <select name="day" class="form-control" ng-model="newEntry.birthday.day" ng-options="i for i in gateCtrl.days">
                         <option value="">Day</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="year" class="form-control" ng-model="gateCtrl.birthday.year" ng-options="i for i in gateCtrl.years">
+                    <select name="year" class="form-control" ng-model="newEntry.birthday.year" ng-options="i for i in gateCtrl.years">
                         <option value="">Year</option>
                     </select>
                 </div>
             </div>
-            <div class="alert alert-danger" ng-if="(ageGateForm.birthday.month.$dirty || ageGateForm.birthday.day.$dirty || ageGateForm.birthday.year.$dirty) && !navCtrl.checkDate()">
-                Sorry, you must be 21 years old or older to enter.
+
+            <div class="col-sm-12 col-md-12">
+                <div class="alert alert-danger" ng-if=
+                    "gateCtrl.validDate() && !gateCtrl.checkSelectDate()">
+                    Sorry, you must be 21 years old or older to enter.
+                </div>
             </div>
         </div>
         <br />
