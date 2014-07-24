@@ -1,9 +1,9 @@
 <div class="wood-container">
     <h1>You could win the Journey of a lifetime.</h1>
-    <p text-center ng-if="!oe">You must be of legal drinking age to enter this site.</p>
+    <p text-center ng-if="!oldEnough">You must be of legal drinking age to enter this site.</p>
     <form name="ageGateForm" role="form" ng-controller="GateController as gateCtrl" novalidate>
         <!-- Date Picker -->
-        <div class="form-group" ng-if="!oe">
+        <div class="form-group" ng-if="!oldEnough">
             <label for="birthday">
                 Date of Birth
             </label>
@@ -12,6 +12,7 @@
             <div class="alert alert-danger" ng-if="ageGateForm.birthday.$dirty && !gateCtrl.checkDate()">
                 Sorry, you must be 21 years old or older to enter.
             </div>
+            {{ gateCtrl.checkDate() }}
         </div>
         <br />
         <div class="row date-of-birth">
@@ -36,7 +37,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="col-sm-12 col-md-12">
                 <div class="alert alert-danger" ng-if=
                     "gateCtrl.validDate() && !gateCtrl.checkSelectDate()">
@@ -44,6 +44,8 @@
                 </div>
             </div>
         </div>
+
+        {{ gateCtrl.checkSelectDate() }}
         <br />
         <!-- Terms and Agreement checkbox -->
         <div class="form-group">

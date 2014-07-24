@@ -11,12 +11,12 @@ angular.module('unfiltered')
 
             $rootScope.location = $location;
 
-            $scope.oe = $("meta[name='old_enough']").attr('content') === "true";
+            $scope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
             // Set new entry dob if old enough
-            if ($scope.oe) {
+            if ($scope.oldEnough) {
                     $scope.newEntry = {};
-                    $scope.newEntry.dob = "07/28/1986";
+                    $scope.newEntry.dob = '07/28/1986';
             }
 
 
@@ -36,7 +36,7 @@ angular.module('unfiltered')
             // Entry Creation
             this.createEntry = function () {
                 if (EntryService.create($scope.newEntry)) {
-                    $location.path('/video');
+                    $location.path('/journey');
                 } else {
                     $location.path('/');
                 }

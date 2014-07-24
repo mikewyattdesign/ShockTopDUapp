@@ -5,6 +5,7 @@ angular.module('unfiltered')
 
             $rootScope.oldEnough = false;
 
+            this.slectDate = moment();
             this.date = moment();
             this.months = [];
             this.days = [];
@@ -25,37 +26,32 @@ angular.module('unfiltered')
 
             // create and check if it is valid date
             this.validDate = function () {
-                console.log($scope.newEntry.birthday.year);
-                console.log($scope.newEntry.birthday.month);
-                console.log($scope.newEntry.birthday.day);
                 if (typeof $scope.newEntry.birthday.year === 'undefined' ||
                     typeof $scope.newEntry.birthday.month === 'undefined' ||
                     typeof $scope.newEntry.birthday.day === 'undefined') {
                     return false;
                 } else {
-                    this.date = moment([parseInt($scope.newEntry.birthday.year),
+                    this.selectDate = moment([parseInt($scope.newEntry.birthday.year),
                                     parseInt($scope.newEntry.birthday.month)-1,
                                     parseInt($scope.newEntry.birthday.day)]);
-                    return this.date.isValid();
+                    return this.selectDate.isValid();
                 }
             }
 
             // create and check date is legal
             this.checkSelectDate = function () {
                 if (this.validDate()) {
-                    $rootScope.oldEnough = this.date.isBefore(this.legalDate);
+                    $rootScope.oldEnough = this.selectDate.isBefore(this.legalDate);
                 }
                 return $rootScope.oldEnough;
             }
 
             // Check birthday is legal
             this.checkDate = function () {
-                var date = moment();
-                // var legalDate = moment().subtract('years', 21);
-                if (typeof $scope.newEntry !== 'undefined') {
-                    date = moment($scope.newEntry.dob);
+                if (typeof $scope.newEntry.dob !== 'undefined') {
+                    this.date = moment($scope.newEntry.birthday.dob);
                 }
-                return date.isBefore(this.legalDate);
+                return this.date; //.isBefore(this.legalDate);
             }
 
             this.leaveAgeGate = function () {
