@@ -3,15 +3,9 @@
         <img src="/images/discover-unfiltered-logo.png" alt="Shocktop logo in a compass">
     </div>
 
-    <ng-view class="view-animate"></ng-view>
-
-    <div class="bottle-container" ng-if="location.path () !== '/fb-authorize' || location.path () !== '/terms'">
-        <img src="/images/beer-bottles.png" alt="Shocktop Bottles">
-    </div>
-    <div class="legal-container">
-        <p>Enjoy Responsibly  &copy;2014 Shock Top Brewing Co., Shock Top&reg; Beer, St. Louis, MO<br/>
-        Shock Top&reg; “Discover Unfiltered” Contest.  NO PURCHASE NECESSARY.  Open to
-        US residents, 21+. Contest begins 7/12/14 and ends 09/07/14.  See Official
-        Rules at www.facebook.com/shocktop for entry, prize and details.  Void where prohibited.</p>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <ng-view class="view-animate"></ng-view>
+        </div>
     </div>
 </div>
