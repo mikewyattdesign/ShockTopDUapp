@@ -4,6 +4,7 @@ require 'bundler'
 Bundler.setup :default, ENV['RACK_ENV']
 require 'sinatra/base'
 require 'sinatra/multi_route'
+require 'sinatra/cookies'
 require 'newrelic_rpm'
 require 'koala'
 require 'rollbar'
@@ -12,9 +13,11 @@ require './lib/facebook'
 require './lib/age_gate'
 require './lib/request_data_extractor'
 
+
 # Main class for the DiscoverUnfilteredQuiz application
 class DiscoverUnfilteredQuiz < Sinatra::Base
     register Sinatra::MultiRoute
+    helpers Sinatra::Cookies
 
     configure do
         set :protection, except: [:frame_options, :http_origin]
@@ -40,7 +43,8 @@ class DiscoverUnfilteredQuiz < Sinatra::Base
         !value.nil? && !value.empty?
     end
 
-    route :post, :get, '/' do
+    route :post, :get, '/' do    
+        @old_enough = old_enough?
         erb :index
     end
 
