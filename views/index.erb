@@ -2,10 +2,10 @@
     <div class="DU-logo">
         <img src="/images/discover-unfiltered-logo.png" alt="Shocktop logo in a compass">
     </div>
-
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
             <ng-view class="view-animate"></ng-view>
         </div>
     </div>
 </div>
+<img src="/images/beer-bottles.png" alt="Shocktop Bottles" class="bottle-container" ng-if="location.path () !== '/fb-authorize' || location.path () !== '/terms'">
