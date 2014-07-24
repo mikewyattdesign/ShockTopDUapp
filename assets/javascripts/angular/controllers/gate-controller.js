@@ -3,7 +3,6 @@ angular.module('unfiltered')
         ['$location', '$scope', '$rootScope',
         function ($location, $scope, $rootScope) {
 
-            // $rootScope.oldEnough = true;
             $rootScope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
             // Set new entry dateOfBirth if old enough
@@ -57,7 +56,7 @@ angular.module('unfiltered')
                 return false;
             }
 
-
+            // Leave the age gate
             this.leaveAgeGate = function () {
                 if (this.isLegalDate()) {
                     $rootScope.oldEnough = true;
