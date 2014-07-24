@@ -24,23 +24,12 @@ angular.module('unfiltered')
                 $location.path(newPath);
             };
 
-            // Entry Creation
-            this.createEntry = function () {
-                if (EntryService.create($scope.newEntry)) {
-                    $location.path('/journey');
-                } else {
-                    $location.path('/');
-                }
-            }
-
-            // Check birthday is legal
-            this.checkDate = function () {
-                var date = moment();
-                var legal_date = moment().subtract('years', 21);
-                if (typeof $scope.newEntry !== 'undefined') {
-                    date = moment($scope.newEntry.dob);
-                }
-                return date.isBefore(legal_date);
-            }
-
+            // // Entry Creation
+            // this.createEntry = function () {
+            //     if (EntryService.create($scope.newEntry)) {
+            //         $location.path('/journey');
+            //     } else {
+            //         $location.path('/');
+            //     }
+            // }
         }]);
