@@ -11,14 +11,6 @@ angular.module('unfiltered')
 
             $rootScope.location = $location;
 
-            $scope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
-
-            // Set new entry dateOfBirth if old enough
-            if ($scope.oldEnough) {
-                    $scope.newEntry = {};
-                    $scope.newEntry.dateOfBirth = '07/28/1986';
-            }
-
 
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
@@ -33,12 +25,12 @@ angular.module('unfiltered')
                 $location.path(newPath);
             };
 
-            // Entry Creation
-            this.createEntry = function () {
-                if (EntryService.create($scope.newEntry)) {
-                    $location.path('/journey');
-                } else {
-                    $location.path('/');
-                }
-            }
+            // // Entry Creation
+            // this.createEntry = function () {
+            //     if (EntryService.create($scope.newEntry)) {
+            //         $location.path('/journey');
+            //     } else {
+            //         $location.path('/');
+            //     }
+            // }
         }]);
