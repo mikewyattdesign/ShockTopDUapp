@@ -17,21 +17,21 @@
         <div class="row date-of-birth">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="month" class="form-control" ng-model="newEntry.birthday.month" ng-options="i for i in gateCtrl.months">
+                    <select name="month" class="form-control" ng-model="newEntry.birthday.month" ng-options="month for month in gateCtrl.months">
                         <option value="">Month</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="day" class="form-control" ng-model="newEntry.birthday.day" ng-options="i for i in gateCtrl.days">
+                    <select name="day" class="form-control" ng-model="newEntry.birthday.day" ng-options="day for day in gateCtrl.days">
                         <option value="">Day</option>
                     </select>
                 </div>
             </div>
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <select name="year" class="form-control" ng-model="newEntry.birthday.year" ng-options="i for i in gateCtrl.years">
+                    <select name="year" class="form-control" ng-model="newEntry.birthday.year" ng-options="year for year in gateCtrl.years">
                         <option value="">Year</option>
                     </select>
                 </div>
