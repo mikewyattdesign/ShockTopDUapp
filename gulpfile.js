@@ -1,9 +1,12 @@
-var gulp   = require('gulp');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var sass   = require('gulp-ruby-sass');
-var exec   = require('child_process').exec;
+var gulp     = require('gulp');
+var jshint   = require('gulp-jshint');
+var concat   = require('gulp-concat');
+var uglify   = require('gulp-uglify');
+var sass     = require('gulp-ruby-sass');
+var exec     = require('child_process').exec;
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
+var cache    = require('gulp-cache');
 
 var paths = {
     scripts: {
@@ -66,6 +69,16 @@ gulp.task('styles', function () {
             style: 'compressed'
         }))
         .pipe(gulp.dest('public/stylesheets'));
+});
+
+gulp.task('images', function () {
+    return gulp.src('assets/images/**/*')
+        .pipe(cache(imagemin({
+            progressive: true,
+            interlaced: true,
+            use: [pngcrush()]
+        })))
+        .pipe(gulp.dest('public/images'));
 });
 
 gulp.task('server', function () {
