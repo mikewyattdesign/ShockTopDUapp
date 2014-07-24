@@ -1,7 +1,7 @@
 angular.module('unfiltered')
     .controller('NavigationController',
-        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService',
-        function ($log, $location, $timeout, $scope, $rootScope, EntryService) {
+        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService', 'progressService',
+        function ($log, $location, $timeout, $scope, $rootScope, EntryService, progressService) {
             'use strict';
 
             // if (!($rootScope.oldEnough)) {
@@ -18,6 +18,11 @@ angular.module('unfiltered')
                 $timeout(function () {
                     $location.path('/entry');
                 }, (5*1000)); // timeout delay is ms
+            });
+
+            $scope.progress = 0;
+            $rootScope.$on('progress-updated', function (event, progress) {
+                $scope.progress = progress;
             });
 
             // Page navigation
