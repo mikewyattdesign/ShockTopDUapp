@@ -1,18 +1,22 @@
 @import "bootstrap";
 @import "bourbon";
-/*@import "mixins.scss";*/
-@import "animations.scss";
 
-$invalid-red: #FA787E;
-$valid-green: #78FA89;
-$font-family: Anton, sans-serif;
-/* default font size = 14px */
+@import "colors";
+@import "animation";
+@import "typography";
 
 body {
+    background: #023b3f url('/images/blue-wood.png') repeat;
+    background-size: 100%, 100%;
+    background-position: bottom center;
+    color: white;
+}
+
+.wrapper {
+    background: url('/images/beach.jpg') no-repeat;
+    background-size: 100%, 100%;
     font: normal 100% $font-family;
     color: rgba(255, 255, 255, 0.8);
-    background: url('/images/blue-wood.png') repeat-y;
-    background-size: 100%, 100%;
 }
 
 h1 {
@@ -25,7 +29,6 @@ h1 {
 h2 {
     font-size: 1.333333333em;
 }
-
 
 p {
     font-size: 1em;
@@ -58,21 +61,13 @@ button {
     border: none;
 }
 
-
-.container {
-    position: relative;
-    width: 100%;
-    background: url('/images/beach.jpg') no-repeat;
-    background-size: 100%, 100%;
-    min-height: 480px;
-    padding: 0%;
-}
-
 .DU-logo {
     width: 35%;
+    max-width: 300px;
     margin: 5% auto 2.5%;
 }
 
+<<<<<<< HEAD
 .bottle-container {
     position: fixed;
     width: 35%;
@@ -97,6 +92,18 @@ button {
     background-size: 100% 100%;
     padding: 10% 15%;
     max-height: 100%;
+=======
+.wood-container {
+    background: url('/images/wood.png') no-repeat;
+    background-size: 100% 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 10%;
+}
+
+.footer {
+    margin-top: 30px;
+>>>>>>> a6b6567ae1d4b477a2824a4b41c4da89c950daa7
 }
 
 /**************************************************************/
@@ -180,5 +187,3 @@ button {
 .animate-if.ng-enter.ng-enter-active {
   opacity:1;
 }
-
-@import "media.scss";

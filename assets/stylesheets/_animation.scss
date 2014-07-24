@@ -1,5 +1,4 @@
-/* Animations */
-@import "bourbon";
+/* Animation */
 
 .view-animate.ng-enter, .view-animate.ng-leave {
   @include transition-delay (0.8s);
