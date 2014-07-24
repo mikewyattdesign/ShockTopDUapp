@@ -68,6 +68,25 @@ button {
     margin: 5% auto 2.5%;
 }
 
+.bottle-container {
+    position: fixed;
+    width: 35%;
+    bottom: 0%;
+    left: 0%;
+}
+
+.legal-container {
+    position: absolute;
+    bottom: -10%;
+    left: 2%;
+    width: 90%;
+
+    p {
+        text-align: left;
+        font-size: 6pt;
+    }
+}
+
 .wood-container {
     background: url('/images/wood.png') no-repeat;
     background-size: 100% 100%;

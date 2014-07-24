@@ -1,9 +1,12 @@
-var gulp   = require('gulp');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var sass   = require('gulp-ruby-sass');
-var exec   = require('child_process').exec;
+var gulp     = require('gulp');
+var jshint   = require('gulp-jshint');
+var concat   = require('gulp-concat');
+var uglify   = require('gulp-uglify');
+var sass     = require('gulp-ruby-sass');
+var exec     = require('child_process').exec;
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
+var cache    = require('gulp-cache');
 
 var paths = {
     scripts: {
@@ -68,6 +71,17 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('public/stylesheets'));
 });
 
+gulp.task('images', function () {
+    return gulp.src('assets/images/**/*')
+        .pipe(cache(imagemin({
+            progressive: true,
+            interlaced: true,
+            use: [pngcrush()]
+        })))
+        .pipe(gulp.dest('public/images'));
+});
+
+// TODO: Figure out a solution for the port already being taken up
 gulp.task('server', function () {
     var server = exec('foreman start', function (error, stdout, stderr) {
         if (error) {
@@ -136,4 +150,5 @@ gulp.task('watch', function () {
         paths.specs.integration
     ), ['protractor']);
     gulp.watch(paths.server.concat(paths.specs.server), ['rspec']);
+    gulp.watch('assets/images', ['images']);
 });
