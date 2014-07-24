@@ -1,8 +1,8 @@
 <div class="wood-container">
     <h1>You could win the Journey of a lifetime.</h1>
     <form name="entryForm" role="form" novalidate>
-        <p text-center>You must be of legal drinking age to enter this site.</p>
-        <div class="form-group">
+        <p text-center ng-if="!oe">You must be of legal drinking age to enter this site.</p>
+        <div class="form-group" ng-if="!oe">
             <label for="birthday">
                 Date of Birth
             </label>
