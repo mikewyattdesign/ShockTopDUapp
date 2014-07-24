@@ -7,14 +7,13 @@
             <label for="birthday">
                 Date of Birth
             </label>
-            <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="newEntry.dob" required>
+            <input type="date" class="form-control date-picker" name="birthday" id="birthday" ng-model="newEntry.dateOfBirth" required>
 
             <div class="alert alert-danger" ng-if="ageGateForm.birthday.$dirty && !gateCtrl.checkDate()">
                 Sorry, you must be 21 years old or older to enter.
             </div>
             {{ gateCtrl.checkDate() }}
         </div>
-        <br />
         <div class="row date-of-birth">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
@@ -46,7 +45,6 @@
         </div>
 
         {{ gateCtrl.checkSelectDate() }}
-        <br />
         <!-- Terms and Agreement checkbox -->
         <div class="form-group">
             <label for="terms">
@@ -57,7 +55,6 @@
                 Please agree to the Official Rules.
             </div>
         </div>
-        <br />
         <!-- Submit button -->
         <div class="row">
             <div class="col-sm-8 col-md-8 col-sm-offset-4 col-md-offset-4">

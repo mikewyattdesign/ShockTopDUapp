@@ -13,10 +13,10 @@ angular.module('unfiltered')
 
             $scope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
-            // Set new entry dob if old enough
+            // Set new entry dateOfBirth if old enough
             if ($scope.oldEnough) {
                     $scope.newEntry = {};
-                    $scope.newEntry.dob = '07/28/1986';
+                    $scope.newEntry.dateOfBirth = '07/28/1986';
             }
 
 

@@ -1,11 +1,11 @@
 angular.module('unfiltered')
     .controller('GateController',
         ['$location', '$scope', '$rootScope',
-        function ($location, $scope, $rootScope){
+        function ($location, $scope, $rootScope) {
 
             $rootScope.oldEnough = false;
 
-            this.slectDate = moment();
+            this.selectDate = moment();
             this.date = moment();
             this.months = [];
             this.days = [];
@@ -48,8 +48,8 @@ angular.module('unfiltered')
 
             // Check birthday is legal
             this.checkDate = function () {
-                if (typeof $scope.newEntry.dob !== 'undefined') {
-                    this.date = moment($scope.newEntry.birthday.dob);
+                if (typeof $scope.newEntry.dateOfBirth !== 'undefined') {
+                    this.date = moment($scope.newEntry.birthday.dateOfBirth);
                 }
                 return this.date; //.isBefore(this.legalDate);
             }
