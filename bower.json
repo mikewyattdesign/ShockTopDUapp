@@ -17,9 +17,16 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.11.1",
-    "bootstrap": "bootstrap-sass-official#3.1.1+2",
+    "angular": "1.2.20",
+    "angular-animate": "1.2.20",
+    "angular-mocks": "1.2.20",
+    "angular-resource": "1.2.20",
+    "angular-route": "1.2.20",
+    "bootstrap": "bootstrap-sass-official#3.2.0",
+    "bourbon": "4.0.2",
     "console-polyfill": "0.1.1",
+    "jquery": "1.11.1",
+    "moment": "2.7.0",
     "respond": "1.4.2"
   }
 }

@@ -1,7 +1,7 @@
 var gulp     = require('gulp');
 var jshint   = require('gulp-jshint');
 var concat   = require('gulp-concat');
-var uglify   = require('gulp-uglify');
+var uglify   = require('gulp-uglifyjs');
 var sass     = require('gulp-ruby-sass');
 var exec     = require('child_process').exec;
 var imagemin = require('gulp-imagemin');
@@ -16,7 +16,7 @@ var paths = {
             'assets/javascripts/angular/services/*.js',
             'assets/javascripts/angular/controllers/*.js',
             'assets/javascripts/application.js',
-            'assets/javascripts/modules/*.js',
+            'assets/javascripts/**/*.js',
             'assets/javascripts/init.js'
         ],
         vendor: [
@@ -33,7 +33,7 @@ var paths = {
     styles: {
         application: 'assets/stylesheets/**/*.scss',
         vendor: [
-            'vendor/bootstrap/vendor/assets/stylesheets/',
+            'vendor/bootstrap/assets/stylesheets/',
             'vendor/bourbon/dist/'
         ]
     },
@@ -51,9 +51,8 @@ var paths = {
 
 gulp.task('scripts', function () {
     return gulp.src(paths.scripts.vendor.concat(paths.scripts.application))
-        .pipe(uglify().on('error', function(e) { console.log('x07', e.message, e.fileName, e.lineNumber); return this.end();}))
         .pipe(concat('application.min.js'))
-        .pipe(uglify({ outSourceMap: false }))
+        .pipe(uglify({ outSourceMap: true }).on('error', function(e) { console.log('x07', e.message, e.fileName, e.lineNumber); return this.end();}))
         .pipe(gulp.dest('public/javascripts/'));
 });
 
@@ -143,7 +142,11 @@ gulp.task('watch', function () {
     gulp.watch(paths.styles.vendor, ['styles']);
     gulp.watch(paths.scripts.application, ['jshint', 'scripts']);
     gulp.watch(paths.scripts.vendor, ['scripts']);
-    gulp.watch(paths.scripts.vendor.concat(paths.scripts.application), ['karma']);
+    gulp.watch([].concat(
+        paths.scripts.vendor,
+        paths.scripts.application,
+        paths.specs.client
+    ), ['karma']);
     gulp.watch([].concat(
         paths.scripts.vendor,
         paths.scripts.application,
