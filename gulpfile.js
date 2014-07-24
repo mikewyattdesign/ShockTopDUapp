@@ -81,6 +81,7 @@ gulp.task('images', function () {
         .pipe(gulp.dest('public/images'));
 });
 
+// TODO: Figure out a solution for the port already being taken up
 gulp.task('server', function () {
     var server = exec('foreman start', function (error, stdout, stderr) {
         if (error) {
@@ -149,4 +150,5 @@ gulp.task('watch', function () {
         paths.specs.integration
     ), ['protractor']);
     gulp.watch(paths.server.concat(paths.specs.server), ['rspec']);
+    gulp.watch('assets/images', ['images']);
 });
