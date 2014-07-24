@@ -16,7 +16,8 @@ body {
     background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
     font: normal 100% $font-family;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 2px #000;
 }
 
 img,
@@ -67,6 +68,7 @@ button {
     width: 35%;
     max-width: 300px;
     margin: 0% auto;
+    padding: 4%;
 }
 
 .bottle-container {
@@ -87,14 +89,12 @@ button {
 .wood-container {
     background: url('/images/wood.png') no-repeat;
     background-size: 100% 100%;
-    background-position: top center;
+    width: 90%;
+    background-position: center center;
     max-width: 1000px;
     margin: 0 auto;
     padding: 60px 10%;
 }
-
-
-/**************************************************************/
 
 .date-container {
     margin-bottom: 3%;
@@ -109,6 +109,21 @@ button {
     margin: 0% auto;
 }
 
+.wood-btn {
+    background: url('/images/btn-background.png') no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    width: 100%;
+    padding-top: 6%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+}
+
 .fb-btn {
     padding: 0;
     width: 5em;
@@ -118,6 +133,7 @@ button {
 
 .submit-btn {
     margin-top: 3%;
+    padding: 2% 18%;
 }
 
 .submit-text {
