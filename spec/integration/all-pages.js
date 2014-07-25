@@ -1,20 +1,20 @@
 describe('All pages', function() {
     'use strict';
 
-    beforeEach(function () {
-        browser.ignoreSynchronization = true;
-    });
-
     it('should redirect when trying to go to a nonexistent page', function () {
         browser.get('/#/fsdfw');
         expect(browser.getCurrentUrl()).toMatch('/#/');
     });
 
-    it('should load the homepage', function() {
-        browser.get('/#/entry');
-        // #getTitle() is a promise, so we need to run #then() on it.
-        browser.getTitle().then(function (title) {
-            expect(title).toBe('Discover Unfiltered');
-        });
+    it('should have an age gate on the home page', function() {
+        browser.get('/#/');
+        expect(browser.getTitle()).toBe('Discover Unfiltered');
+        expect(element(by.css('body')).getText())
+            .toMatch(/You could win the Journey of a lifetime/i);
+        expect(element(by.css('body')).getText())
+            .toMatch(/You must be of legal drinking age to enter this site/i);
+        expect(element(by.css('body')).getText())
+            .toMatch(/By submitting I agree to the Official Rules/i);
+
     });
 });
