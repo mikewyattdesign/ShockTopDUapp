@@ -18,12 +18,28 @@ angular.module('unfiltered')
 
             var progressUpdated = function () {
                 $rootScope.$broadcast('progress-updated', progress);
+                if (progress === 100) {
+                    $rootScope.$broadcast('progress-complete');
+                }
             };
 
-            advanceProgress();
+            // Set the current progress value.  Value must be between
+            // 0 and 100;
+            this.set = function (value) {
+                progress = value;
+                progressUpdated();
+            };
 
-            $timeout(advanceProgress, 500);
-            $timeout(advanceProgress, 1700);
-            $timeout(advanceProgress, 2500);
-            $timeout(advanceProgress, 3800);
+            this.advance = function () {
+                if (progress === 100) {
+                    return false;
+                }
+                progress = progress + (max - progress) * 0.1;
+                progressUpdated();
+            };
+
+            this.complete = function () {
+                progress = 100;
+                progressUpdated();
+            };
         }]);
