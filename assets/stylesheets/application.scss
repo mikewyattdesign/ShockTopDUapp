@@ -65,6 +65,14 @@ button {
     vertical-align: middle;
 }
 
+/* lighten up link colors because of dark background */
+a {
+    color: #33CCFF;
+}
+a:hover {
+    color: #29A3CC;
+}
+
 /* Containers */
 .DU-logo {
     width: 35%;
