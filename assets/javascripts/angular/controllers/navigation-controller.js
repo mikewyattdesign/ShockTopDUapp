@@ -65,8 +65,8 @@ angular.module('unfiltered')
                                 } else {
                                     alert('Upload Failed');
                                 }
-                            }, null, function(evt) {
-                                file.progress =  parseInt(100.0 * evt.loaded / evt.total);
+                            }, null, function(event) {
+                                file.progress =  parseInt(100.0 * event.loaded / event.total);
                             });
                         });
                     }(file, i));
