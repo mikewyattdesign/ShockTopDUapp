@@ -16,7 +16,13 @@ body {
     background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
     font: normal 100% $font-family;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 2px #000;
+}
+
+img,
+input {
+    max-width: 100%;
 }
 
 h1 {
@@ -24,20 +30,18 @@ h1 {
     font-size: 2em;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 2%;
 }
 
 h2 {
     font-size: 1.333333333em;
+    margin-bottom: 2%;
 }
 
 p {
     font-size: 1em;
     text-align: center;
-}
-
-img,
-input {
-    max-width: 100%;
+    margin-bottom: 2%;
 }
 
 label {
@@ -58,14 +62,13 @@ button {
     width: 90%;
     color: #000;
     vertical-align: middle;
-    background: transparent;
-    border: none;
 }
 
 .DU-logo {
     width: 35%;
     max-width: 300px;
-    margin: 5% auto 2.5%;
+    margin: 0% auto;
+    padding: 4%;
 }
 
 .bottle-container {
@@ -86,26 +89,46 @@ button {
 .wood-container {
     background: url('/images/wood.png') no-repeat;
     background-size: 100% 100%;
+    width: 90%;
+    background-position: center center;
     max-width: 1000px;
     margin: 0 auto;
     padding: 60px 10%;
 }
 
-
-/**************************************************************/
+.date-container {
+    margin-bottom: 3%;
+}
 
 .form-group {
     margin: 0%;
 }
 
-.progress {
-    width: 75%;
-    margin: 0% auto;
+.wood-btn {
+    background: url('/images/btn-background.png') no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    width: 100%;
+    padding-top: 6%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
 }
 
 .fb-btn {
     padding: 0;
     width: 5em;
+    background: transparent;
+    border: none;
+}
+
+.submit-btn {
+    margin-top: 3%;
+    padding: 2% 18%;
 }
 
 .submit-text {
@@ -174,7 +197,7 @@ button {
   opacity:1;
 }
 
-@media screen and (min-height: 1010px) {
+@media screen and (min-height: 906px) {
     .legal {
         position: fixed;
         bottom: 0;

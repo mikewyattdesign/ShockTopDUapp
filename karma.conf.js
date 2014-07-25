@@ -18,15 +18,20 @@ module.exports = function(config) {
       'vendor/respond/dest/respond.src.js',
       'vendor/jquery/dist/jquery.js',
       'vendor/console-polyfill/index.js',
-      'assets/javascripts/application.js',
-      'assets/javascripts/modules/*.js',
+      'vendor/moment/moment.js',
+      'vendor/angular/angular.js',
+      'vendor/angular-resource/angular-resource.js',
+      'vendor/angular-route/angular-route.js',
+      'vendor/angular-animate/angular-animate.js',
+      'vendor/angular-mocks/angular-mocks.js',
+      'assets/javascripts/**/*.js',
       'spec/client/**/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-
+      'assets/javascripts/init.js'
     ],
 
 

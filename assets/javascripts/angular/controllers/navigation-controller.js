@@ -1,7 +1,7 @@
 angular.module('unfiltered')
     .controller('NavigationController',
-        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService','$upload', '$http',
-        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http ) {
+        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService','$upload', '$http', 'progressService',
+        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http, $progressService ) {
             'use strict';
 
             // if (!($rootScope.oldEnough)) {
@@ -10,14 +10,6 @@ angular.module('unfiltered')
             // }
 
             $rootScope.location = $location;
-
-            $scope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
-
-            // Set new entry dateOfBirth if old enough
-            if ($scope.oldEnough) {
-                    $scope.newEntry = {};
-                    $scope.newEntry.dateOfBirth = '07/28/1986';
-            }
 
 
             // After entry is saved, redirect
@@ -76,18 +68,13 @@ angular.module('unfiltered')
                     }(file, i));
                 }
             };
+            $scope.progress = 0;
+            $rootScope.$on('progress-updated', function (event, progress) {
+                $scope.progress = progress;
+            });
 
             // Page navigation
             this.goToPath = function (newPath) {
                 $location.path(newPath);
             };
-
-            // Entry Creation
-            this.createEntry = function () {
-                if (EntryService.create($scope.newEntry)) {
-                    $location.path('/journey');
-                } else {
-                    $location.path('/');
-                }
-            }
         }]);

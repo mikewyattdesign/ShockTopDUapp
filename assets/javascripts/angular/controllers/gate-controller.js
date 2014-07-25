@@ -3,15 +3,20 @@ angular.module('unfiltered')
         ['$location', '$scope', '$rootScope',
         function ($location, $scope, $rootScope) {
 
-            $rootScope.oldEnough = false;
+            $rootScope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
-            this.selectDate = moment();
-            this.date = moment();
+            // Set new entry dateOfBirth if old enough
+            if ($rootScope.oldEnough) {
+                    $scope.newEntry = {};
+                    $scope.dateOfBirth = '07/28/1986';
+            }
+            this.date = {};
             this.months = [];
             this.days = [];
             this.years = [];
-            this.birthday = {};
             this.legalDate = moment().subtract('years', 21);
+
+
 
             // Populate date arrays
             for (var i = 1; i <= 12; i += 1) {
@@ -24,38 +29,37 @@ angular.module('unfiltered')
                 this.years.push(i);
             }
 
-            // create and check if it is valid date
-            this.validDate = function () {
-                if (typeof $scope.newEntry.birthday.year === 'undefined' ||
-                    typeof $scope.newEntry.birthday.month === 'undefined' ||
-                    typeof $scope.newEntry.birthday.day === 'undefined') {
-                    return false;
-                } else {
-                    this.selectDate = moment([parseInt($scope.newEntry.birthday.year),
-                                    parseInt($scope.newEntry.birthday.month)-1,
-                                    parseInt($scope.newEntry.birthday.day)]);
-                    return this.selectDate.isValid();
+            // create a date object from inputs
+            this.createValidDate = function () {
+                // create date date for mobile
+                if (typeof $scope.ageGateForm.date !== 'undefined') {
+                    this.date = moment($scope.ageGateForm.date);
+                    return true;
                 }
+                // create date date for desktop
+                if (typeof $scope.ageGateForm.year === 'number' &&
+                    typeof $scope.ageGateForm.month === 'number' &&
+                    typeof $scope.ageGateForm.day === 'number') {
+                    this.date = moment([parseInt($scope.ageGateForm.year),
+                                        parseInt($scope.ageGateForm.month)-1,
+                                        parseInt($scope.ageGateForm.day)]);
+                    return this.date.isValid();
+                }
+                return false;
             }
 
-            // create and check date is legal
-            this.checkSelectDate = function () {
-                if (this.validDate()) {
-                    $rootScope.oldEnough = this.selectDate.isBefore(this.legalDate);
+            // check if date of birth is legal
+            this.isLegalDate = function () {
+                if (this.createValidDate()) {
+                    return this.date.isBefore(this.legalDate);
                 }
-                return $rootScope.oldEnough;
+                return false;
             }
 
-            // Check birthday is legal
-            this.checkDate = function () {
-                if (typeof $scope.newEntry.dateOfBirth !== 'undefined') {
-                    this.date = moment($scope.newEntry.birthday.dateOfBirth);
-                }
-                return this.date; //.isBefore(this.legalDate);
-            }
-
+            // Leave the age gate
             this.leaveAgeGate = function () {
-                if (this.checkDate()) {
+                if (this.isLegalDate()) {
+                    $rootScope.oldEnough = true;
                     $location.path('/journey');
                 }
             }
