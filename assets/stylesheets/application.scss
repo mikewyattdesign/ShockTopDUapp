@@ -15,7 +15,7 @@ body {
 .wrapper {
     background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
-    font: normal 100% $font-family;
+    font: normal 100% $FONT_FAMILY;
     color: rgba(255, 255, 255, 1);
     text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
 }
@@ -109,7 +109,7 @@ button {
     background-size: 100% 100%;
     background-position: center center;
     width: 100%;
-    padding: 3% 5%;
+    padding: 6% 5%;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
@@ -158,11 +158,11 @@ button {
 
 /** Form validation **/
 .form-control.ng-invalid.ng-dirty {
-    border-color: $invalid-red;
+    border-color: $INVALID_RED;
     border-width: 2px;
 }
 .form-control.ng-valid.ng-dirty {
-    border-color: $valid-green;
+    border-color: $VALID_GREEN;
     border-width: 2px;
 }
 

@@ -11,7 +11,6 @@ angular.module('unfiltered')
 
             $rootScope.location = $location;
 
-
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
                 // redirect to the entry page
@@ -19,6 +18,11 @@ angular.module('unfiltered')
                     $location.path('/entry');
                 }, (5*1000)); // timeout delay is ms
             });
+
+            // Page navigation
+            this.goToPath = function (newPath) {
+                $location.path(newPath);
+            };
 
             $scope.imageUploads = [];
 
@@ -72,9 +76,4 @@ angular.module('unfiltered')
             $rootScope.$on('progress-updated', function (event, progress) {
                 $scope.progress = progress;
             });
-
-            // Page navigation
-            this.goToPath = function (newPath) {
-                $location.path(newPath);
-            };
         }]);

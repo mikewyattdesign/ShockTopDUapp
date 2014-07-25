@@ -37,9 +37,9 @@ angular.module('unfiltered')
                     return true;
                 }
                 // create date date for desktop
-                if (typeof $scope.ageGateForm.year === 'number' &&
-                    typeof $scope.ageGateForm.month === 'number' &&
-                    typeof $scope.ageGateForm.day === 'number') {
+                if (typeof $scope.ageGateForm.year === 'number'
+                    && typeof $scope.ageGateForm.month === 'number'
+                    && typeof $scope.ageGateForm.day === 'number') {
                     this.date = moment([parseInt($scope.ageGateForm.year),
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
