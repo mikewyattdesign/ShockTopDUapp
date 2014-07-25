@@ -4,10 +4,10 @@ angular.module('unfiltered')
         function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http, $progressService ) {
             'use strict';
 
-            // if (!($rootScope.oldEnough)) {
-            //     $log.info('not old enough');
-            //     $location.path('/');
-            // }
+            // Init Facebook if necessary
+            if (typeof FB === 'undefined'){
+                DISCOVER_UNFILTERED.facebook.init()
+            }
 
             $rootScope.location = $location;
 
@@ -22,7 +22,7 @@ angular.module('unfiltered')
 
             $scope.imageUploads = [];
 
-            $scope.onFileSelect = function ($files) {
+            $rootScope.onFileSelect = function ($files) {
                 $scope.files = $files;
                 $scope.upload = [];
                 for (var i = 0; i < $files.length; i++) {
@@ -67,11 +67,20 @@ angular.module('unfiltered')
                         });
                     }(file, i));
                 }
+                $location.path('/fb-authorize');
             };
+
+
             $scope.progress = 0;
             $rootScope.$on('progress-updated', function (event, progress) {
                 $scope.progress = progress;
             });
+
+            // Facebook Authorization
+            $scope.getFacebookInfo = function () {
+                window.fbUser = DISCOVER_UNFILTERED.facebook.getFacebookUserInfo();
+                console.log(fbUser);
+            };
 
             // Page navigation
             this.goToPath = function (newPath) {
