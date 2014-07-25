@@ -41,7 +41,7 @@ angular.module('unfiltered')
                             var s3Params = response;
                             console.log(s3Params);
                             $scope.upload[i] = $upload.upload({
-                                url: 'https://' + 'shocktop-du' + '.s3.amazonaws.com/',
+                                url: 'https://' + s3Params.bucket + '.s3.amazonaws.com/',
                                 method: 'POST',
                                 data: {
                                     'key' : 'temp/'+ Math.round(Math.random()*10000) + '$$' + file.name,
