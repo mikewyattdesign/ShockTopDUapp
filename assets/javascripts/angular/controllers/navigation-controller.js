@@ -1,7 +1,7 @@
 angular.module('unfiltered')
     .controller('NavigationController',
-        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService','$upload',
-        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload ) {
+        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService','$upload', '$http',
+        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http ) {
             'use strict';
 
             // if (!($rootScope.oldEnough)) {
@@ -28,34 +28,54 @@ angular.module('unfiltered')
                 }, (5*1000)); // timeout delay is ms
             });
 
-            $scope.onFileSelect = function($files) {
-               //$files: an array of files selected, each file has name, size, and type.
-               for (var i = 0; i < $files.length; i++) {
-                 var file = $files[i];
-                 $scope.upload = $upload.upload({
-                   url: 'server/upload/url', //upload.php script, node.js route, or servlet url
-                   //method: 'POST' or 'PUT',
-                   //headers: {'header-key': 'header-value'},
-                   //withCredentials: true,
-                   data: {myObj: $scope.myModelObj},
-                   file: file, // or list of files ($files) for html5 only
-                   //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
-                   // customize file formData name ('Content-Desposition'), server side file variable name. 
-                   //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
-                   // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
-                   //formDataAppender: function(formData, key, val){}
-                 }).progress(function(evt) {
-                   console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-                 }).success(function(data, status, headers, config) {
-                   // file is uploaded successfully
-                   console.log(data);
-                 });
-                 //.error(...)
-                 //.then(success, error, progress); 
-                 // access or attach event listeners to the underlying XMLHttpRequest.
-                 //.xhr(function(xhr){xhr.upload.addEventListener(...)})
-               }
-           }
+            $scope.imageUploads = [];
+
+            $scope.onFileSelect = function ($files) {
+                $scope.files = $files;
+                $scope.upload = [];
+                for (var i = 0; i < $files.length; i++) {
+                    var file = $files[i];
+                    file.progress = parseInt(0);
+                    (function (file, i) {
+                        $http.get('/aws.json').success(function(response) {
+                            var s3Params = response;
+                            console.log(s3Params);
+                            $scope.upload[i] = $upload.upload({
+                                url: 'https://' + 'shocktop-du' + '.s3.amazonaws.com/',
+                                method: 'POST',
+                                data: {
+                                    'key' : 'temp/'+ Math.round(Math.random()*10000) + '$$' + file.name,
+                                    'acl' : 'public-read',
+                                    'Content-Type' : file.type,
+                                    'AWSAccessKeyId': s3Params.accessKeyId,
+                                    'success_action_status' : '201',
+                                    'Policy' : s3Params.policy,
+                                    'Signature' : s3Params.signature
+                                },
+                                file: file,
+                            }).then(function(response) {
+                                file.progress = parseInt(100);
+                                if (response.status === 201) {
+                                    var data = xml2json.parser(response.data),
+                                    parsedData;
+                                    parsedData = {
+                                        location: data.postresponse.location,
+                                        bucket: data.postresponse.bucket,
+                                        key: data.postresponse.key,
+                                        etag: data.postresponse.etag
+                                    };
+                                    $scope.imageUploads.push(parsedData);
+
+                                } else {
+                                    alert('Upload Failed');
+                                }
+                            }, null, function(evt) {
+                                file.progress =  parseInt(100.0 * evt.loaded / evt.total);
+                            });
+                        });
+                    }(file, i));
+                }
+            };
 
             // Page navigation
             this.goToPath = function (newPath) {
