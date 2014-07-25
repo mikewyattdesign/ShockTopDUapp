@@ -24,9 +24,11 @@ var paths = {
             'vendor/jquery/dist/jquery.js',
             'vendor/console-polyfill/index.js',
             'vendor/moment/moment.js',
+            'vendor/ng-file-upload/angular-file-upload-shim.js',
             'vendor/angular/angular.js',
             'vendor/angular-resource/angular-resource.js',
             'vendor/angular-route/angular-route.js',
+            'vendor/ng-file-upload/angular-file-upload.js',
             'vendor/angular-animate/angular-animate.js'
         ]
     },

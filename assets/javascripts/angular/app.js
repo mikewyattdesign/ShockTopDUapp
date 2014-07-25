@@ -1,5 +1,6 @@
 angular.module('unfiltered', [
     'ngResource',
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
+    'angularFileUpload'
 ]);
