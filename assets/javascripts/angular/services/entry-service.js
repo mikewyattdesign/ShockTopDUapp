@@ -1,7 +1,7 @@
 angular.module('unfiltered')
     .service('EntryService', [
-        '$log', '$location', '$rootScope',
-        function ($log, $location, $rootScope) {
+        '$log', '$location', '$rootScope', '$http',
+        function ($log, $location, $rootScope, $http ) {
             'use strict';
             var uuid = 1;
             var entries = {};
@@ -45,7 +45,12 @@ angular.module('unfiltered')
                     console.log(tempEntry);
                     // entries.push(angular.copy(tempEntry));
                     // DatabaseService.saveEntry(angular.copy(tempEntry));
+
+
+                    
                     $rootScope.$broadcast('entrySaved');
+
+
                 }
             }
         }]);

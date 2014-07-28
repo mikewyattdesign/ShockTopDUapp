@@ -12,12 +12,42 @@ angular.module('unfiltered')
             $rootScope.location = $location;
             $scope.facebookConnected = false;
 
+
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
-                // redirect to the entry page
-                $timeout(function () {
-                    $location.path('/thanks');
-                }, (1*1000)); // timeout delay is ms
+
+                    var data = {};
+
+                    // If birthday doesn't exist, then what?
+                    data[$rootScope.userInfo.guid] = {
+                        entrant: {
+                            name:           $rootScope.userInfo.name,
+                            email:          $rootScope.userInfo.email,
+                            birthdate:      $rootScope.userInfo.birthday
+                        },
+                        entry: {
+                            s3_uri: $rootScope.userInfo.video,
+                            date_created: $rootScope.userInfo.date_created,
+                            location: 'Facebook'
+                        }
+                    };
+
+                    // Actually submit the entry to the admin
+                    $http({
+                        method: 'POST',
+                        url: 'http://du-admin.herokuapp.com/api/warriordash',
+                        data: data,
+                        headers: {"Content-Type":"application/json"}
+                    }).success(function(data, status, headers, config) {
+                        console.log('adminResponse',data);
+                        // redirect to the entry page
+                        $timeout(function () {
+                            $location.path('/thanks');
+                        }, (1*1000)); // timeout delay is ms
+                    }).error(function (data, status, headers, config){
+                        console.error('Save failed :-(');
+                    });
+
             });
 
             // Page navigation
