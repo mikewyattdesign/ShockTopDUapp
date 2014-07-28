@@ -45,6 +45,8 @@ angular.module('unfiltered')
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
                     return this.date.isValid();
+                } else if($rootScope.oldEnough) {
+                    return true;
                 }
                 return false;
             }
