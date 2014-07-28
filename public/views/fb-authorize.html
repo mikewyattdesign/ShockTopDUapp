@@ -1,15 +1,16 @@
 <!-- Authorizing Page -->
-<div class="wood-container text-center" ng-click="navCtrl.goToPath('/upload')">
+<div class="wood-container text-center">
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
             <h2>Uploading Video...</h2>
             <div ng-include src="'views/_progress.html'"></div>
             <h1>Almost done...</h1>
             <div class="text-center submit-text">
-                <button type="button" class="fb-btn"><img src="/images/fb-login.png" alt="Authorize Facebook"></button> to finish entering.
+                <button type="button" class="fb-btn" ng-click="getFacebookInfo()"><img src="/images/fb-login.png" alt="Authorize Facebook"></button> to finish entering.
             </div>
             <p>We promise to never post anything without your permission.</p>
         </div>
     </div>
 </div>
 <!-- Authorizing Page -->
+<!-- ng-click="navCtrl.goToPath('/upload')" -->
