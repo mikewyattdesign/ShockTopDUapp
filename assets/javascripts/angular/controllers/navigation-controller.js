@@ -24,11 +24,12 @@ angular.module('unfiltered')
                 $location.path(newPath);
             };
 
-            $scope.imageUploads = [];
+            $rootScope.imageUploads = [];
+            $rootScope.progress = 0;
 
             $rootScope.onFileSelect = function ($files) {
-                $scope.files = $files;
-                $scope.upload = [];
+                $rootScope.files = $files;
+                $rootScope.upload = [];
                 for (var i = 0; i < $files.length; i++) {
                     var file = $files[i];
                     file.progress = parseInt(0);
@@ -36,7 +37,7 @@ angular.module('unfiltered')
                         $http.get('/aws.json').success(function(response) {
                             var s3Params = response;
                             console.log(s3Params);
-                            $scope.upload[i] = $upload.upload({
+                            $rootScope.upload[i] = $upload.upload({
                                 url: 'https://' + s3Params.bucket + '.s3.amazonaws.com/',
                                 method: 'POST',
                                 data: {
@@ -60,13 +61,16 @@ angular.module('unfiltered')
                                         key: data.postresponse.key,
                                         etag: data.postresponse.etag
                                     };
-                                    $scope.imageUploads.push(parsedData);
+                                    $rootScope.imageUploads.push(parsedData);
 
                                 } else {
                                     alert('Upload Failed');
                                 }
                             }, null, function(event) {
                                 file.progress =  parseInt(100.0 * event.loaded / event.total);
+                                $rootScope.files[0].progress = file.progress;
+                                $rootScope.progress = file.progress;
+                                console.log(event,'$rootScope', $rootScope.files[0].progress);
                             });
                         });
                     }(file, i));
@@ -74,22 +78,20 @@ angular.module('unfiltered')
                 $location.path('/fb-authorize');
             };
 
-
-            $scope.progress = 0;
             $rootScope.$on('progress-updated', function (event, progress) {
                 $scope.progress = progress;
             });
 
             // Facebook Authorization
             $scope.getFacebookInfo = function () {
-                if (DISCOVER_UNFILTERED.facebook.loginToFacebook() == true) {
+                var logged_in;
+                logged_in = DISCOVER_UNFILTERED.facebook.loginToFacebook();
+                if ( logged_in ) {
                     $rootScope.userInfo = {};
                     FB.api('/me', function (response) {
                         $rootScope.userInfo = response;
                     });
-                } else {
-                    alert('Please authorize the app to enter the contest.');
-                } 
+                }
             };
 
             // Page navigation

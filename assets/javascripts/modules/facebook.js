@@ -25,7 +25,7 @@
         };
 
 
-        var loginToFacebook = function () {
+        var loginToFacebook = function (options, callback) {
 
             var logged_in = false;
             var scopes = 'email, public_profile, user_birthday, user_location';
@@ -48,6 +48,9 @@
                 }
             });
 
+            if (typeof callback === "function"){
+                callback(options);
+            }
             return logged_in;
         };
 
