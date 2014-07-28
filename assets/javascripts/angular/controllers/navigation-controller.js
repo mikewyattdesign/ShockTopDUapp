@@ -10,13 +10,14 @@ angular.module('unfiltered')
             }
 
             $rootScope.location = $location;
+            $scope.facebookConnected = false;
 
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
                 // redirect to the entry page
                 $timeout(function () {
-                    $location.path('/entry');
-                }, (5*1000)); // timeout delay is ms
+                    $location.path('/thanks');
+                }, (1*1000)); // timeout delay is ms
             });
 
             // Page navigation
@@ -28,6 +29,22 @@ angular.module('unfiltered')
             $rootScope.progress = 0;
 
             $rootScope.onFileSelect = function ($files) {
+                $scope.facebookConnected = DISCOVER_UNFILTERED.facebook.facebookConnected();
+                
+                console.log($scope.facebookConnected);
+                // If connected to facebook, grab the user's info and save the entry
+                if ($scope.facebookConnected === true) {
+                    console.log('already connected');
+                    FB.api('/me', function (response) {
+                        $rootScope.userInfo = response;
+                        EntryService.create($rootScope.userInfo);
+                        console.log('saved entry');
+                    });
+                    $location.path('/upload');
+                } else {
+                    $location.path('/fb-authorize');
+                }
+
                 $rootScope.files = $files;
                 $rootScope.upload = [];
                 for (var i = 0; i < $files.length; i++) {
@@ -52,6 +69,7 @@ angular.module('unfiltered')
                                 file: file,
                             }).then(function(response) {
                                 file.progress = parseInt(100);
+                                $rootScope.progress = file.progress;
                                 if (response.status === 201) {
                                     var data = xml2json.parser(response.data),
                                     parsedData;
@@ -63,35 +81,47 @@ angular.module('unfiltered')
                                     };
                                     $rootScope.imageUploads.push(parsedData);
 
+                                    console.log('done uploading');
+                                    // Save the entry if the user has already logged into Facebook and connected
+                                    if (typeof $rootScope.userInfo !== 'undefined' && $rootScope.userInfo.hasOwnProperty('name') && $rootScope.userInfo.hasOwnProperty('email')){
+                                        console.log('saving upload info');
+                                        EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                                    } else {
+                                        console.log('waiting for Facebook info');
+                                    }
+
                                 } else {
                                     alert('Upload Failed');
                                 }
                             }, null, function(event) {
                                 file.progress =  parseInt(100.0 * event.loaded / event.total);
-                                $rootScope.files[0].progress = file.progress;
-                                $rootScope.progress = file.progress;
-                                console.log(event,'$rootScope', $rootScope.files[0].progress);
+
+                                // Broadcast progress update
+                                $rootScope.$broadcast('progress-updated',event, file.progress);
                             });
                         });
                     }(file, i));
                 }
-                $location.path('/fb-authorize');
+                
             };
 
             $rootScope.$on('progress-updated', function (event, progress) {
-                $scope.progress = progress;
+                $rootScope.progress = progress;
             });
 
             // Facebook Authorization
             $scope.getFacebookInfo = function () {
-                var logged_in;
-                logged_in = DISCOVER_UNFILTERED.facebook.loginToFacebook();
-                if ( logged_in ) {
-                    $rootScope.userInfo = {};
+                DISCOVER_UNFILTERED.facebook.loginToFacebook(function(){
                     FB.api('/me', function (response) {
                         $rootScope.userInfo = response;
+                        EntryService.create($rootScope.userInfo);
+
+                        // Save the entry if the video has already been uploaded
+                        if (typeof $rootScope.imageUploads !== 'undefined' && $rootScope.imageUploads[0].hasOwnProperty('location')){
+                            EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                        }
                     });
-                }
+                });
             };
 
             // Page navigation

@@ -37,13 +37,13 @@ angular.module('unfiltered')
             this.save = function (videoLoc, createDate) {
                 if (tempEntry === null) {
                     $log.info('tempEntry null');
-                    $location.path('/entry');
+                    $location.path('/');
                 } else {
                     console.log(tempEntry);
                     tempEntry.video = videoLoc;
                     tempEntry.date_created = createDate;
                     console.log(tempEntry);
-                    entries.push(angular.copy(tempEntry));
+                    // entries.push(angular.copy(tempEntry));
                     // DatabaseService.saveEntry(angular.copy(tempEntry));
                     $rootScope.$broadcast('entrySaved');
                 }

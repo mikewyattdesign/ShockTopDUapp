@@ -24,11 +24,24 @@
             });
         };
 
+        var facebookConnected = function() {
+            var connected = false;
+            FB.getLoginStatus(function (response) {
+                connected = response.status === 'connected';
+            });
+            return connected;
+        }
 
-        var loginToFacebook = function (options, callback) {
+        var loginToFacebook = function (callback) {
 
             var logged_in = false;
             var scopes = 'email, public_profile, user_birthday, user_location';
+            var guardedCallback = function() {
+                if (typeof callback === "function"){
+                    console.log()
+                    callback();
+                }
+            };
             // Check login status
             FB.getLoginStatus(function (response) {
 
@@ -36,27 +49,32 @@
                 if (response.status !== 'connected') {
                     if (response.status === 'not_authorized') {
                         FB.login(function (response) {
-                            logged_in = response.status !== 'connected';
+                            logged_in = response.status === 'connected';
+                            if (logged_in) {
+                                guardedCallback();
+                            }
                         }, {scope: scopes, auth_type: 'rerequest'});
                     } else {
                         FB.login(function (response) {
-                            logged_in = response.status !== 'connected';
+                            logged_in = response.status === 'connected';
+                            if (logged_in) {
+                                guardedCallback();
+                            }
                         }, {scope: scopes});
                     }
                 } else {
                     logged_in = true;
+                    guardedCallback();
                 }
             });
 
-            if (typeof callback === "function"){
-                callback(options);
-            }
             return logged_in;
         };
 
         return {
             init: init,
-            loginToFacebook: loginToFacebook
+            loginToFacebook: loginToFacebook,
+            facebookConnected: facebookConnected
         };
     }());
 }());
