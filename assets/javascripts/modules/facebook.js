@@ -51,21 +51,9 @@
             return logged_in;
         };
 
-        var getFacebookUserInfo = function () {
-
-            var userInfo = {};
-  
-            if (loginToFacebook() == true) {
-                FB.api('/me', function (response) {
-                    userInfo = response;
-                });
-            }
-            return userInfo;
-        };
-
         return {
             init: init,
-            getFacebookUserInfo: getFacebookUserInfo
+            loginToFacebook: loginToFacebook
         };
     }());
 }());

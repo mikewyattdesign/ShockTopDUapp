@@ -78,8 +78,14 @@ angular.module('unfiltered')
 
             // Facebook Authorization
             $scope.getFacebookInfo = function () {
-                window.fbUser = DISCOVER_UNFILTERED.facebook.getFacebookUserInfo();
-                console.log(fbUser);
+                if (DISCOVER_UNFILTERED.facebook.loginToFacebook() == true) {
+                    $rootScope.userInfo = {};
+                    FB.api('/me', function (response) {
+                        $rootScope.userInfo = response;
+                    });
+                } else {
+                    alert('Please authorize the app to enter the contest.');
+                } 
             };
 
             // Page navigation
