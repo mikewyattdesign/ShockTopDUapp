@@ -150,6 +150,8 @@ a:hover {
 .alert {
     width: 100%;
     text-shadow: none;
+    position: absolute;
+    z-index: 10;
 }
 
 /* Buttons */
