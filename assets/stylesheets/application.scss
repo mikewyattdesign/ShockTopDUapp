@@ -14,13 +14,16 @@ body {
 .wrapper {
     background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
-    background-position-y: -10%;
+    background-position-y: -8%;
     font: normal 100% $FONT_FAMILY;
     color: rgba(255, 255, 255, 1);
     text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
     min-height: 620px;
     padding-bottom: 50%;
+}
 
+.container {
+    width: 100%;
 }
 
 img,
@@ -102,8 +105,8 @@ a:hover {
 .wood-container {
     background: url('/images/wood.png') no-repeat;
     background-size: 100% 100%;
-    width: 100%;
-    background-position: top center;
+    /*width: 100%;*/
+    max-width: 800px;
     margin: 0 auto;
     padding: 60px 10%;
 }
