@@ -10,7 +10,6 @@ angular.module('unfiltered')
             }
 
             $rootScope.location = $location;
-            $scope.facebookConnected = false;
 
 
             // After entry is saved, redirect
@@ -64,19 +63,7 @@ angular.module('unfiltered')
             $rootScope.progress = 0;
 
             $rootScope.onFileSelect = function ($files) {
-                $scope.facebookConnected = DISCOVER_UNFILTERED.facebook.facebookConnected();
 
-                console.log($scope.facebookConnected);
-                // If connected to facebook, grab the user's info and save the entry
-                if ($scope.facebookConnected === true) {
-                    console.log('already connected');
-                    FB.api('/me', function (response) {
-                        if (typeof $rootScope.userInfo.birthday !== 'undefined')){
-                            response.birthday = $rootScope.userInfo.birthday;
-                        }
-                        $rootScope.userInfo = response;
-                    });
-                }
                 $location.path('/fb-authorize');
 
                 $rootScope.files = $files;
@@ -148,18 +135,6 @@ angular.module('unfiltered')
                 EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
 
             }
-
-            // Facebook Authorization
-            $scope.getFacebookInfo = function () {
-                DISCOVER_UNFILTERED.facebook.loginToFacebook(function(){
-                    FB.api('/me', function (response) {
-                        if (typeof $rootScope.userInfo.birthday !== 'undefined'){
-                            response.birthday = $rootScope.userInfo.birthday;
-                        }
-                        $rootScope.userInfo = response;
-                    });
-                });
-            };
 
             $scope.shareOnFacebook = function () {
                 console.log('attempting to share on facebook');
