@@ -6,10 +6,6 @@
             <h2 ng-if="progress >= 100">Video Uploaded!</h2>
             <div ng-include src="'views/_progress.html'"></div>
             <h1>Almost done...</h1>
-            <div class="submit-text">
-                <button type="button" class="fb-btn" ng-click="getFacebookInfo()"><img src="/images/fb-login.png" alt="Authorize Facebook"></button> to finish entering.
-            </div>
-            <p>We promise to never post anything without your permission.</p>
         </div>
     </div>
     <form name="entryForm" role="form" ng-submit="entryForm.$valid && navCtrl.createEntry()" novalidate>
