@@ -1,6 +1,4 @@
 <!-- Authorizing Page -->
-<div class="row">
-<div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
 <div class="wood-container">
     <div class="row text-center">
         <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
@@ -46,8 +44,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <label for="birthday">Date of Birth</label>
+        <div class="row" ng-controller="GateController as gateCtrl">
+            <div class="col-sm-12 col-md-12">
+                <label for="birthday">Date of Birth</label>
+            </div>
             <div class="date-of-birth hidden-xs hidden-sm">
                 <div class="col-sm-4 col-md-4">
                     <div class="form-group">

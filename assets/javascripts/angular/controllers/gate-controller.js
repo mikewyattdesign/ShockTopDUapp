@@ -38,6 +38,7 @@ angular.module('unfiltered')
                     this.date = moment([parseInt($scope.ageGateForm.year),
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
+                    $rootScope.userInfo = {};
                     $rootScope.userInfo.birthday = this.date;
                     return this.date.isValid();
                 }
