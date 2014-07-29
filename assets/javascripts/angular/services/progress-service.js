@@ -34,7 +34,7 @@ angular.module('unfiltered')
                 if (progress === 100) {
                     return false;
                 }
-                progress = progress + (max - progress) * 0.1;
+                progress = progress + ((max - progress) * 0.1);
                 progressUpdated();
             };
 
