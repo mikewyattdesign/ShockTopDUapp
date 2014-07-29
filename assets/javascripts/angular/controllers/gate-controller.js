@@ -27,6 +27,7 @@ angular.module('unfiltered')
                 // create date date for mobile
                 if (typeof $scope.ageGateForm.date !== 'undefined') {
                     this.date = moment($scope.ageGateForm.date);
+                    $rootScope.userInfo = {};
                     $rootScope.userInfo.birthday = this.date;
                     return true;
                 }
