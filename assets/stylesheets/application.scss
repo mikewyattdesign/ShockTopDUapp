@@ -38,25 +38,25 @@ img {
 
 h1 {
     text-transform: uppercase;
-    font-size: 2em;
+    font-size: 2 * $FONT_SIZE;
     font-weight: bold;
     text-align: center;
     margin-bottom: 2%;
 }
 
 h2 {
-    font-size: 1.333333333em;
+    font-size: 1.333333333 * $FONT_SIZE;
     margin-bottom: 2%;
 }
 
 p {
-    font-size: 1em;
+    font-size: 1 * $FONT_SIZE;
     text-align: center;
     margin-bottom: 2%;
 }
 
 label {
-    font-size: 1.2em;
+    font-size: 1.2 * $FONT_SIZE;
     font-weight: bold;
     a {
         color: #FFF;
