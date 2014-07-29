@@ -8,6 +8,11 @@ angular.module('unfiltered')
                 controllerAs: 'navCtrl',
                 templateUrl: 'views/age-gate.html'
             })
+            .when('/entry', {
+                controller: 'NavigationController',
+                controllerAs: 'navCtrl',
+                templateUrl: 'views/entry.html'
+            })
             .when('/terms', {
                 controller: 'NavigationController',
                 controllerAs: 'navCtrl',

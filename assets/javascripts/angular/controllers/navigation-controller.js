@@ -60,7 +60,7 @@ angular.module('unfiltered')
 
             $rootScope.onFileSelect = function ($files) {
                 $scope.facebookConnected = DISCOVER_UNFILTERED.facebook.facebookConnected();
-                
+
                 console.log($scope.facebookConnected);
                 // If connected to facebook, grab the user's info and save the entry
                 if ($scope.facebookConnected === true) {
@@ -132,7 +132,7 @@ angular.module('unfiltered')
                         });
                     }(file, i));
                 }
-                
+
             };
 
             $rootScope.$on('progress-updated', function (event, progress) {
@@ -153,10 +153,4 @@ angular.module('unfiltered')
                     });
                 });
             };
-
-            // Page navigation
-            this.goToPath = function (newPath) {
-                $location.path(newPath);
-            };
-
         }]);
