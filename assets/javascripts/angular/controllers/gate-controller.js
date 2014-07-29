@@ -11,6 +11,8 @@ angular.module('unfiltered')
 
             $rootScope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
 
+            $rootScope.userInfo = {};
+
             // Populate date arrays
             for (var i = 1; i <= 12; i += 1) {
                 this.months.push(i);
@@ -31,7 +33,6 @@ angular.module('unfiltered')
                 // create date date for mobile
                 if (typeof $scope.ageGateForm.date !== 'undefined') {
                     this.date = moment($scope.ageGateForm.date);
-                    $rootScope.userInfo = {};
                     $rootScope.userInfo.birthday = this.date;
                     return true;
                 }
@@ -42,7 +43,6 @@ angular.module('unfiltered')
                     this.date = moment([parseInt($scope.ageGateForm.year),
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
-                    $rootScope.userInfo = {};
                     $rootScope.userInfo.birthday = this.date;
                     return this.date.isValid();
                 }
