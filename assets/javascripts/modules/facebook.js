@@ -35,7 +35,7 @@
         var loginToFacebook = function (callback) {
 
             var logged_in = false;
-            var scopes = 'email, public_profile, user_birthday, user_location';
+            var scopes = 'email, public_profile';
             var guardedCallback = function() {
                 if (typeof callback === "function"){
                     console.log()
