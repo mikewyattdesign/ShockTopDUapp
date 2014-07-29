@@ -65,10 +65,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <button type="submit" class="wood-btn" ng-click="enter=true">ENTER</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
+                    <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
                     Sorry, you must be 21 years old or older and have agreed to the Official Rules to enter.
                 </div>
             </div>
