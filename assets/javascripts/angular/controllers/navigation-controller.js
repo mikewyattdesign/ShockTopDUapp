@@ -33,7 +33,7 @@ angular.module('unfiltered')
                     };
 
                     var adminAppName = $('meta[name="admin_app_name"]').attr('content');
-                    
+
                     // Actually submit the entry to the admin
                     $http({
                         method: 'POST',
@@ -156,9 +156,11 @@ angular.module('unfiltered')
                 });
             };
 
-            // Page navigation
-            this.goToPath = function (newPath) {
-                $location.path(newPath);
-            };
-
+            $scope.shareOnFacebook = function () {
+                FB.ui({
+                    method: 'share',
+                    href: 'https://apps.facebook.com/discover-unfiltered'
+                }, function(response){});
+                // navCtrl.goToPath('/');
+            }
         }]);
