@@ -137,8 +137,11 @@ a:hover {
 
 .terms-box {
     color: #FFF;
-    padding: 150px 10%;
+    /*padding: 150px 10%;*/
+    padding: 5%;
     width: 100%;
+    height: 500px;
+    overflow-y: scroll;
     p {
         text-align: left;
     }
