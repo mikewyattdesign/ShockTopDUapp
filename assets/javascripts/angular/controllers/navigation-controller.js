@@ -71,7 +71,7 @@ angular.module('unfiltered')
                 if ($scope.facebookConnected === true) {
                     console.log('already connected');
                     FB.api('/me', function (response) {
-                        if ($rootScope.userInfo.hasOwnProperty('birthday')){
+                        if (typeof $rootScope.userInfo.birthday !== 'undefined')){
                             response.birthday = $rootScope.userInfo.birthday;
                         }
                         $rootScope.userInfo = response;
@@ -153,7 +153,7 @@ angular.module('unfiltered')
             $scope.getFacebookInfo = function () {
                 DISCOVER_UNFILTERED.facebook.loginToFacebook(function(){
                     FB.api('/me', function (response) {
-                        if ($rootScope.userInfo.hasOwnProperty('birthday')){
+                        if (typeof $rootScope.userInfo.birthday !== 'undefined'){
                             response.birthday = $rootScope.userInfo.birthday;
                         }
                         $rootScope.userInfo = response;
