@@ -35,7 +35,7 @@ angular.module('unfiltered')
                     // Actually submit the entry to the admin
                     $http({
                         method: 'POST',
-                        url: 'http://du-admin.herokuapp.com/api/warriordash',
+                        url: 'http://du-admin-staging.herokuapp.com/api/warriordash',
                         data: data,
                         headers: {"Content-Type":"application/json"}
                     }).success(function(data, status, headers, config) {
@@ -115,7 +115,7 @@ angular.module('unfiltered')
                                     // Save the entry if the user has already logged into Facebook and connected
                                     if (typeof $rootScope.userInfo !== 'undefined' && $rootScope.userInfo.hasOwnProperty('name') && $rootScope.userInfo.hasOwnProperty('email')){
                                         console.log('saving upload info');
-                                        EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                                        EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
                                     } else {
                                         console.log('waiting for Facebook info');
                                     }
@@ -148,7 +148,7 @@ angular.module('unfiltered')
 
                         // Save the entry if the video has already been uploaded
                         if (typeof $rootScope.imageUploads !== 'undefined' && $rootScope.imageUploads[0].hasOwnProperty('location')){
-                            EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                            EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
                         }
                     });
                 });
