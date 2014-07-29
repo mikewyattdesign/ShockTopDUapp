@@ -26,10 +26,14 @@ body {
     width: 100%;
 }
 
-img,
-input {
+input,
+select {
     max-width: 100%;
     margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
 }
 
 h1 {
@@ -121,7 +125,7 @@ a:hover {
 
 .date-picker {
     /* Ensures full sized date picker on mobile devices */
-    width: 500px;
+    width: 1000px;
 }
 
 .submit-text {

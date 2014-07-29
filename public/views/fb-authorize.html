@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <label for="name">First and Last Name</label>
+                    <label for="name">Full Name</label>
                     <input type="text" class="form-control" placeholder="Jane Doe" name="name" id="name" ng-model="userInfo.name" required>
                     <div class="alert alert-danger" ng-if="entryForm.name.$dirty && entryForm.name.$invalid">
                     Please input your name
@@ -43,6 +43,45 @@
                     <div class="alert alert-danger" ng-if="entryForm.email.$dirty && entryForm.email.$invalid">
                     Please input your email address
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label for="birthday">Date of Birth</label>
+            <div class="date-of-birth hidden-xs hidden-sm">
+                <div class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <select name="month" class="form-control" ng-model="userInfo.birthday.month" ng-options="month for month in gateCtrl.months">
+                            <option value="">Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <select name="day" class="form-control" ng-model="userInfo.birthday.day" ng-options="day for day in gateCtrl.days">
+                            <option value="">Day</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <select name="year" class="form-control" ng-model="userInfo.birthday.year" ng-options="year for year in gateCtrl.years">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="date-of-birth hidden-md hidden-lg">
+                <div class="col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <input type="date" class="form-control date-picker" name="birthday" placeholder="mm/dd/yyyy" id="birthday" ng-model="userInfo.birthday" required>
+                    </div>
+                </div>
+            </div>
+            <!-- Legal Age Alert -->
+            <div class="col-sm-12 col-md-12">
+                <div class="alert alert-danger" ng-if="gateCtrl.createValidDate() && !gateCtrl.isLegalDate()">
+                    Sorry, you must be 21 years old or older to enter.
                 </div>
             </div>
         </div>

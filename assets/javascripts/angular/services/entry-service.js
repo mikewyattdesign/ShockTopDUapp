@@ -43,14 +43,7 @@ angular.module('unfiltered')
                     tempEntry.video = videoLoc;
                     tempEntry.date_created = createDate;
                     console.log(tempEntry);
-                    // entries.push(angular.copy(tempEntry));
-                    // DatabaseService.saveEntry(angular.copy(tempEntry));
-
-
-                    
                     $rootScope.$broadcast('entrySaved');
-
-
                 }
             }
         }]);

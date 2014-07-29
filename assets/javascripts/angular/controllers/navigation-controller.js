@@ -22,8 +22,11 @@ angular.module('unfiltered')
                     data[$rootScope.userInfo.guid] = {
                         entrant: {
                             name:           $rootScope.userInfo.name,
+                            phone:          $rootScope.userInfo.phone,
                             email:          $rootScope.userInfo.email,
-                            birthdate:      $rootScope.userInfo.birthday
+                            birthdate:      $rootScope.userInfo.birthday,
+                            street_address: $rootScope.userInfo.addr,
+                            zipcode:        $rootScope.userInfo.zip
                         },
                         entry: {
                             s3_uri: $rootScope.userInfo.video,
@@ -113,11 +116,6 @@ angular.module('unfiltered')
                                     $rootScope.imageUploads.push(parsedData);
 
                                     // console.log('done uploading');
-                                    // Save the entry if the user has already logged into Facebook and connected
-                                    if (typeof $rootScope.userInfo !== 'undefined' && $rootScope.userInfo.hasOwnProperty('name') && $rootScope.userInfo.hasOwnProperty('email')){
-                                        // console.log('saving upload info');
-                                        // EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
-                                    }
 
                                 } else {
                                     alert('Upload Failed');
@@ -138,6 +136,12 @@ angular.module('unfiltered')
                 $rootScope.progress = progress;
             });
 
+            this.createEntry = function () {
+                EntryService.create($rootScope.userInfo);
+                EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
+
+            }
+
             // Facebook Authorization
             $scope.getFacebookInfo = function () {
                 DISCOVER_UNFILTERED.facebook.loginToFacebook(function(){
@@ -146,12 +150,6 @@ angular.module('unfiltered')
                             response.birthday = $rootScope.userInfo.birthday;
                         }
                         $rootScope.userInfo = response;
-                        // EntryService.create($rootScope.userInfo);
-
-                        // Save the entry if the video has already been uploaded
-                        if (typeof $rootScope.imageUploads !== 'undefined' && $rootScope.imageUploads[0].hasOwnProperty('location')){
-                            // EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
-                        }
                     });
                 });
             };
