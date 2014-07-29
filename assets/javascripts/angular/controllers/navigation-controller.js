@@ -32,10 +32,12 @@ angular.module('unfiltered')
                         }
                     };
 
+                    var adminAppName = $('meta[name="admin_app_name"]').attr('content');
+                    
                     // Actually submit the entry to the admin
                     $http({
                         method: 'POST',
-                        url: 'http://du-admin-staging.herokuapp.com/api/warriordash',
+                        url: 'http://'+ adminAppName + '.herokuapp.com/api/warriordash',
                         data: data,
                         headers: {"Content-Type":"application/json"}
                     }).success(function(data, status, headers, config) {
