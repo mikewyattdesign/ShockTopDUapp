@@ -22,7 +22,7 @@
 
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone">Phone</label>
                     <input type="tel" class="form-control" placeholder="(###) ###-####" name="phone" id="phone" ng-model="userInfo.phone" ng-pattern="/^(\d\W?)?(\(\d{3}\)|\d{3})\W?\d{3}\W?\d{4}$/" required>
                     <div class="alert alert-danger" ng-if="entryForm.phone.$dirty && entryForm.phone.$invalid">
                     Please input your phone number with area code
@@ -32,7 +32,7 @@
 
             <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" placeholder="jane@example.com" name="email" id="email" ng-model="userInfo.email" required>
                     <div class="alert alert-danger" ng-if="entryForm.email.$dirty && entryForm.email.$invalid">
                     Please input your email address
