@@ -32,10 +32,12 @@ angular.module('unfiltered')
                         }
                     };
 
+                    var adminAppName = $('meta[name="admin_app_name"]').attr('content');
+
                     // Actually submit the entry to the admin
                     $http({
                         method: 'POST',
-                        url: 'http://du-admin.herokuapp.com/api/warriordash',
+                        url: 'http://'+ adminAppName + '.herokuapp.com/api/warriordash',
                         data: data,
                         headers: {"Content-Type":"application/json"}
                     }).success(function(data, status, headers, config) {
@@ -115,7 +117,7 @@ angular.module('unfiltered')
                                     // Save the entry if the user has already logged into Facebook and connected
                                     if (typeof $rootScope.userInfo !== 'undefined' && $rootScope.userInfo.hasOwnProperty('name') && $rootScope.userInfo.hasOwnProperty('email')){
                                         console.log('saving upload info');
-                                        EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                                        EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
                                     } else {
                                         console.log('waiting for Facebook info');
                                     }
@@ -148,9 +150,18 @@ angular.module('unfiltered')
 
                         // Save the entry if the video has already been uploaded
                         if (typeof $rootScope.imageUploads !== 'undefined' && $rootScope.imageUploads[0].hasOwnProperty('location')){
-                            EntryService.save($rootScope.imageUploads[0].location, Date.now());
+                            EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
                         }
                     });
                 });
+            };
+
+            $scope.shareOnFacebook = function () {
+                console.log('attempting to share on facebook');
+                FB.ui({
+                    method: 'share',
+                    href: 'https://apps.facebook.com/discover-unfiltered'
+                }, function(response){});
+                // navCtrl.goToPath('/');
             };
         }]);
