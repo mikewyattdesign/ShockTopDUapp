@@ -157,6 +157,7 @@ angular.module('unfiltered')
             };
 
             $scope.shareOnFacebook = function () {
+                console.log('attempting to share on facebook');
                 FB.ui({
                     method: 'share',
                     href: 'https://apps.facebook.com/discover-unfiltered'
