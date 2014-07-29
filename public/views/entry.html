@@ -1,19 +1,4 @@
-<!-- Authorizing Page -->
-<div class="row">
-<div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
 <div class="wood-container">
-    <div class="row text-center">
-        <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-            <h2 ng-if="progress < 100">Uploading Video...</h2>
-            <h2 ng-if="progress >= 100">Video Uploaded!</h2>
-            <div ng-include src="'views/_progress.html'"></div>
-            <h1>Almost done...</h1>
-            <div class="submit-text">
-                <button type="button" class="fb-btn" ng-click="getFacebookInfo()"><img src="/images/fb-login.png" alt="Authorize Facebook"></button> to finish entering.
-            </div>
-            <p>We promise to never post anything without your permission.</p>
-        </div>
-    </div>
     <form name="entryForm" role="form" ng-submit="entryForm.$valid && navCtrl.createEntry()" novalidate>
         <div class="row">
             <div class="col-sm-4 col-md-4">
@@ -68,15 +53,13 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <button type="submit" class="wood-btn" ng-click="submitted=true">SUBMIT</button>
-                <div class="alert alert-danger" ng-if="submitted && entryForm.$invalid">
-                    Please fill in all the entries to continue.
+            <div class="col-md-12 col-sm-12">
+                <button type="submit" class="wood-btn" ng-click="submitted=true"  ng-hide="submitted">SUBMIT</button>
+                <div class="alert alert-danger" ng-if="submitted && entryForm.$invalid || !navCtrl.checkDate()">
+                    Sorry, you must be 21 years old or older and have agreed to the Official Rules to enter.
                 </div>
             </div>
         </div>
     </form>
 </div>
-<!-- Authorizing Page -->

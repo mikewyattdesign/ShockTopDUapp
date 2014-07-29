@@ -14,16 +14,19 @@ body {
 .wrapper {
     background: url('/images/beach.jpg') no-repeat;
     background-size: 100%, 100%;
+    background-position-y: -10%;
     font: normal 100% $FONT_FAMILY;
     color: rgba(255, 255, 255, 1);
     text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
     min-height: 620px;
-    padding-bottom: 35%;
+    padding-bottom: 50%;
+
 }
 
 img,
 input {
     max-width: 100%;
+    margin-bottom: 1em;
 }
 
 h1 {
@@ -174,11 +177,6 @@ a:hover {
     visibility: hidden;
 }
 
-.submit-btn {
-    margin-top: 3%;
-    padding: 2% 18%;
-}
-
 #upload-btn:hover {
   cursor: pointer;
   opacity: 0.8;
@@ -199,19 +197,55 @@ a:hover {
 }
 /* Media Queries */
 
-/*@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
     .wrapper {
-        background-position: 0 -44%;
+        background-position-y: -20%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .wrapper {
+        background-position-y: -30%;
     }
 }
 
 @media screen and (min-width: 750px) {
     .wrapper {
-        background-position: 0 -60%;
+        background-position-y: -40%;
     }
 }
 
-@media screen and (min-height: 906px) {
+@media screen and (min-width: 800px) {
+    .wrapper {
+        background-position-y: -50%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .wrapper {
+        background-position-y: -150px;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .wrapper {
+        background-position-y: -175px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .wrapper {
+        background-position-y: -225px;
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    .wrapper {
+        background-position-y: -250px;
+    }
+}
+
+/*@media screen and (min-height: 906px) {
     .legal {
         position: fixed;
         bottom: 0;

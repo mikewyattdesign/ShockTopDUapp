@@ -3,21 +3,13 @@ angular.module('unfiltered')
         ['$location', '$scope', '$rootScope',
         function ($location, $scope, $rootScope) {
 
-            this.date = {};
             this.months = [];
             this.days = [];
             this.years = [];
+            this.date = {};
             this.legalDate = moment().subtract('years', 21);
 
             $rootScope.oldEnough = $("meta[name='old_enough']").attr('content') === "true";
-
-            // Set new entry dateOfBirth if old enough
-            if ($rootScope.oldEnough) {
-                    $scope.newEntry = {};
-                    $scope.dateOfBirth = '07/28/1986';
-                    this.date = moment().subtract('years', 23);
-            }
-
 
             // Populate date arrays
             for (var i = 1; i <= 12; i += 1) {
@@ -35,6 +27,7 @@ angular.module('unfiltered')
                 // create date date for mobile
                 if (typeof $scope.ageGateForm.date !== 'undefined') {
                     this.date = moment($scope.ageGateForm.date);
+                    $rootScope.userInfo.birthday = this.date;
                     return true;
                 }
                 // create date date for desktop
@@ -44,8 +37,12 @@ angular.module('unfiltered')
                     this.date = moment([parseInt($scope.ageGateForm.year),
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
+                    $rootScope.userInfo.birthday = this.date;
                     return this.date.isValid();
-                } else if($rootScope.oldEnough) {
+                }
+                // if already logged into Facebook, able to bypass age-gate
+                if($rootScope.oldEnough) {
+                    this.date = moment().subtract('years', 23); // fake
                     return true;
                 }
                 return false;

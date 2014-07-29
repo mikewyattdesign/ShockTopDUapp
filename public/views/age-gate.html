@@ -1,6 +1,6 @@
 <div class="wood-container">
     <div ng-controller="GateController as gateCtrl">
-        <h1>You could win the Journey of a lifetime.</h1>
+        <h1>You could win the<br>Journey of a lifetime.</h1>
         <p text-center ng-if="!oldEnough">You must be of legal drinking age to enter this site.</p>
         <form name="ageGateForm" role="form" ng-submit="gateCtrl.leaveAgeGate()" novalidate>
             <!-- Date Picker -->
@@ -63,7 +63,7 @@
                     <button type="submit" class="wood-btn" ng-click="enter=true">ENTER</button>
                 </div>
                 <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
-                    Sorry, you must be 21 years old or older to enter and have agreed to the Official Rules above.
+                    Sorry, you must be 21 years old or older and have agreed to the Official Rules to enter.
                 </div>
             </div>
         </form>
