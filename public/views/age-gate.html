@@ -55,9 +55,9 @@
                             <input type="checkbox" checked="no" class="terms-checkbox" name="terms" id="terms" ng-model="ageGateForm.terms" required>
                             By submitting I agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a>.
                         </label>
-                        <div class="alert alert-danger" ng-if="!ageGateForm.terms">
-                            Please agree to the Official Rules.
-                        </div>
+                    </div>
+                    <div class="alert alert-danger" ng-if="!ageGateForm.terms">
+                        Please agree to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a>.
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="col-sm-12 col-md-12">
                     <button type="submit" class="wood-btn" ng-click="enter=true">ENTER</button>
                     <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
-                    Sorry, you must be 21 years old or older and have agreed to the Official Rules to enter.
+                    Sorry, you must be 21 years old or older and have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> to enter.
                 </div>
             </div>
         </form>
