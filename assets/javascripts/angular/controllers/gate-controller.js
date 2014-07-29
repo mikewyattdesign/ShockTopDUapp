@@ -22,6 +22,10 @@ angular.module('unfiltered')
                 this.years.push(i);
             }
 
+            $rootScope.months = this.months;
+            $rootScope.days = this.days;
+            $rootScope.years = this.years;
+
             // create a date object from inputs
             this.createValidDate = function () {
                 // create date date for mobile
@@ -38,6 +42,7 @@ angular.module('unfiltered')
                     this.date = moment([parseInt($scope.ageGateForm.year),
                                         parseInt($scope.ageGateForm.month)-1,
                                         parseInt($scope.ageGateForm.day)]);
+                    $rootScope.userInfo = {};
                     $rootScope.userInfo.birthday = this.date;
                     return this.date.isValid();
                 }
