@@ -137,6 +137,13 @@ angular.module('unfiltered')
             });
 
             this.createEntry = function () {
+                if (typeof $rootScope.userInfo.birthday.month !== 'undefined'
+                    && typeof $rootScope.userInfo.birthday.day !== 'undefined'
+                    && typeof $rootScope.userInfo.birthday.year !== 'undefined') {
+                    $rootScope.userInfo.birthday = moment([parseInt($rootScope.userInfo.birthday.year),
+                                                            parseInt($rootScope.userInfo.birthday.month)-1,
+                                                            parseInt($rootScope.userInfo.birthday.day)]);
+                }
                 EntryService.create($rootScope.userInfo);
                 EntryService.save($rootScope.imageUploads[0].location, moment().format('L'));
 

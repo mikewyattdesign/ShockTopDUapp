@@ -44,28 +44,28 @@
                 </div>
             </div>
         </div>
-        <div class="row" ng-controller="GateController as gateCtrl">
+        <div class="row">
             <div class="col-sm-12 col-md-12">
                 <label for="birthday">Date of Birth</label>
             </div>
             <div class="date-of-birth hidden-xs hidden-sm">
                 <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                        <select name="month" class="form-control" ng-model="userInfo.birthday.month" ng-options="month for month in gateCtrl.months">
+                        <select name="month" class="form-control" ng-model="userInfo.birthday.month" ng-options="month for month in months">
                             <option value="">Month</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                        <select name="day" class="form-control" ng-model="userInfo.birthday.day" ng-options="day for day in gateCtrl.days">
+                        <select name="day" class="form-control" ng-model="userInfo.birthday.day" ng-options="day for day in days">
                             <option value="">Day</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                        <select name="year" class="form-control" ng-model="userInfo.birthday.year" ng-options="year for year in gateCtrl.years">
+                        <select name="year" class="form-control" ng-model="userInfo.birthday.year" ng-options="year for year in years">
                             <option value="">Year</option>
                         </select>
                     </div>
@@ -76,12 +76,6 @@
                     <div class="form-group">
                         <input type="date" class="form-control date-picker" name="birthday" placeholder="mm/dd/yyyy" id="birthday" ng-model="userInfo.birthday" required>
                     </div>
-                </div>
-            </div>
-            <!-- Legal Age Alert -->
-            <div class="col-sm-12 col-md-12">
-                <div class="alert alert-danger" ng-if="gateCtrl.createValidDate() && !gateCtrl.isLegalDate()">
-                    Sorry, you must be 21 years old or older to enter.
                 </div>
             </div>
         </div>
