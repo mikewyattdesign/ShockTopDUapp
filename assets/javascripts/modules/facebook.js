@@ -3,8 +3,8 @@
     DISCOVER_UNFILTERED.facebook = (function () {
         var facebookAppId;
         var init = function () {
-            if (document.getElementById('facebook-app-id')) {
-                facebookAppId = document.getElementById('facebook-app-id').innerHTML;
+            if ($('meta[name="facebook_app_id"]').length > 0) {
+                facebookAppId = $('meta[name="facebook_app_id"]').attr('content');
                 connectToFacebook();
             }
         };
