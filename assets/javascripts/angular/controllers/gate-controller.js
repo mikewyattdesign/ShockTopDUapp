@@ -30,13 +30,13 @@ angular.module('unfiltered')
 
             // create a date object from inputs
             this.createValidDate = function () {
-                // create date date for mobile
+                // create date for mobile
                 if (typeof $scope.ageGateForm.date !== 'undefined') {
                     this.date = moment($scope.ageGateForm.date);
                     $rootScope.userInfo.birthday = this.date;
                     return true;
                 }
-                // create date date for desktop
+                // create date for desktop
                 if (typeof $scope.ageGateForm.year === 'number'
                     && typeof $scope.ageGateForm.month === 'number'
                     && typeof $scope.ageGateForm.day === 'number') {

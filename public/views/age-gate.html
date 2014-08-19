@@ -65,10 +65,27 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <button type="submit" id="enter" class="wood-btn" ng-click="enter=true">ENTER</button>
-                    <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
-                    Sorry, you must be 21 years old or older and have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> to enter.
+                </div>
+                <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
+                    Sorry, you must
+                    <span ng-if="!gateCtrl.isLegalDate()">be 21 years old or older </span>
+                    <span ng-if="!gateCtrl.isLegalDate() && (ageGateForm.terms.$pristine || !ageGateForm.terms)">and </span>
+                    <span ng-if="ageGateForm.terms.$pristine || !ageGateForm.terms">have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> </span>
+                    to enter.
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="alert alert-danger" ng-if="enter && !gateCtrl.isLegalDate()">
+                    Sorry, you must be 21 years old or older to enter.
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="alert alert-danger" ng-if="enter && (ageGateForm.terms.$pristine || !ageGateForm.terms)">
+                    Sorry, you must have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> to enter.
+                    </div>
+                </div>
+            </div> -->
         </form>
     </div>
 </div>
