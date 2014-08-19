@@ -64,7 +64,7 @@ angular.module('unfiltered')
 
             // Leave the age gate
             this.leaveAgeGate = function () {
-                if (this.isLegalDate()) {
+                if (this.isLegalDate() && $scope.ageGateForm.terms === true) {
                     $rootScope.oldEnough = true;
                     $location.path('/journey');
                 }
