@@ -11,21 +11,21 @@
                 <div class="row date-of-birth hidden-xs hidden-sm">
                     <div class="col-sm-4 col-md-4">
                         <div class="form-group">
-                            <select name="month" class="form-control" ng-model="ageGateForm.month" ng-options="month for month in gateCtrl.months">
+                            <select name="month" class="form-control" ng-model="ageGateForm.month" ng-options="month for month in gateCtrl.months" ng-class="{'legalvalid': gateCtrl.isLegalDate(), 'illegalvalid': !gateCtrl.isLegalDate()}">
                                 <option value="">Month</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-4">
                         <div class="form-group">
-                            <select name="day" class="form-control" ng-model="ageGateForm.day" ng-options="day for day in gateCtrl.days">
+                            <select name="day" class="form-control" ng-model="ageGateForm.day" ng-options="day for day in gateCtrl.days" ng-class="{'legalvalid': gateCtrl.isLegalDate(), 'illegalvalid': !gateCtrl.isLegalDate()}">
                                 <option value="">Day</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-4">
                         <div class="form-group">
-                            <select name="year" class="form-control" ng-model="ageGateForm.year" ng-options="year for year in gateCtrl.years">
+                            <select name="year" class="form-control" ng-model="ageGateForm.year" ng-options="year for year in gateCtrl.years" ng-class="{'legalvalid': gateCtrl.isLegalDate(), 'illegalvalid': !gateCtrl.isLegalDate()}">
                                 <option value="">Year</option>
                             </select>
                         </div>
@@ -34,7 +34,7 @@
                 <div class="row date-of-birth hidden-md hidden-lg">
                     <div class="col-sm-12 col-md-12">
                         <div class="form-group">
-                            <input type="date" class="form-control date-picker" name="birthday" placeholder="mm/dd/yyyy" id="birthday" ng-model="ageGateForm.date" required>
+                            <input type="date" class="form-control date-picker" name="birthday" placeholder="mm/dd/yyyy" id="birthday" ng-model="ageGateForm.date" ng-class="{'legalvalid': gateCtrl.isLegalDate(), 'illegalvalid': !gateCtrl.isLegalDate()}" required>
                         </div>
                     </div>
                 </div>
@@ -65,13 +65,13 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <button type="submit" id="enter" class="wood-btn" ng-click="enter=true">ENTER</button>
-                </div>
-                <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
-                    Sorry, you must
-                    <span ng-if="!gateCtrl.isLegalDate()">be 21 years old or older </span>
-                    <span ng-if="!gateCtrl.isLegalDate() && (ageGateForm.terms.$pristine || !ageGateForm.terms)">and </span>
-                    <span ng-if="ageGateForm.terms.$pristine || !ageGateForm.terms">have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> </span>
-                    to enter.
+                    <div class="alert alert-danger" ng-if="enter && (!gateCtrl.isLegalDate() || ageGateForm.terms.$pristine || !ageGateForm.terms)">
+                        Sorry, you must
+                        <span ng-if="!gateCtrl.isLegalDate()">be 21 years old or older </span>
+                        <span ng-if="!gateCtrl.isLegalDate() && (ageGateForm.terms.$pristine || !ageGateForm.terms)">and </span>
+                        <span ng-if="ageGateForm.terms.$pristine || !ageGateForm.terms">have agreed to the <a class="terms" href="" ng-click="navCtrl.goToPath('/terms')">Official Rules</a> </span>
+                        to enter.
+                    </div>
                 </div>
             </div>
         </form>

@@ -221,10 +221,16 @@ a:hover {
     border-color: $INVALID_RED;
     border-width: 2px;
 }
-.form-control.ng-valid.ng-dirty {
-    border-color: $VALID_GREEN;
+
+.legalvalid {
+    border-color: $VALID_GREEN !important;
     border-width: 2px;
 }
+
+/*.form-control.ng-valid.ng-dirty {
+    border-color: $VALID_GREEN;
+    border-width: 2px;
+}*/
 /* Media Queries */
 @media screen and (min-width: 400px) {
     .wood-container {
