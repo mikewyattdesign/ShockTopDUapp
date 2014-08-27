@@ -1,12 +1,16 @@
 angular.module('unfiltered')
-    .controller('NavigationController',
-        ['$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService','$upload', '$http', 'progressService',
-        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http, $progressService ) {
+    .controller('NavigationController', [
+        '$log', '$location', '$timeout', '$scope', '$rootScope', 'EntryService', '$upload', '$http', 'progressService', '$window',
+        function ($log, $location, $timeout, $scope, $rootScope, EntryService, $upload, $http, $progressService, $window) {
             'use strict';
 
+            $scope.$on('$viewContentLoaded', function (event) {
+                $window.ga('send', 'pageview', { page: $location.path() });
+            });
+
             // Init Facebook if necessary
-            if (typeof FB === 'undefined'){
-                DISCOVER_UNFILTERED.facebook.init()
+            if (typeof FB === 'undefined') {
+                DISCOVER_UNFILTERED.facebook.init();
             }
 
             $rootScope.location = $location;
@@ -15,42 +19,42 @@ angular.module('unfiltered')
             // After entry is saved, redirect
             $scope.$on('entrySaved', function () {
 
-                    var data = {};
+                var data = {};
 
-                    // If birthday doesn't exist, then what?
-                    data[$rootScope.userInfo.guid] = {
-                        entrant: {
-                            name:           $rootScope.userInfo.name,
-                            phone:          $rootScope.userInfo.phone,
-                            email:          $rootScope.userInfo.email,
-                            birthdate:      $rootScope.userInfo.birthday,
-                            street_address: $rootScope.userInfo.addr,
-                            zipcode:        $rootScope.userInfo.zip
-                        },
-                        entry: {
-                            s3_uri: $rootScope.userInfo.video,
-                            date_created: $rootScope.userInfo.date_created,
-                            location: 'Facebook'
-                        }
-                    };
+                // If birthday doesn't exist, then what?
+                data[$rootScope.userInfo.guid] = {
+                    entrant: {
+                        name:           $rootScope.userInfo.name,
+                        phone:          $rootScope.userInfo.phone,
+                        email:          $rootScope.userInfo.email,
+                        birthdate:      $rootScope.userInfo.birthday,
+                        street_address: $rootScope.userInfo.addr,
+                        zipcode:        $rootScope.userInfo.zip
+                    },
+                    entry: {
+                        s3_uri: $rootScope.userInfo.video,
+                        date_created: $rootScope.userInfo.date_created,
+                        location: 'Facebook'
+                    }
+                };
 
-                    var adminAppName = $('meta[name="admin_app_name"]').attr('content');
+                var adminAppName = $('meta[name="admin_app_name"]').attr('content');
 
-                    // Actually submit the entry to the admin
-                    $http({
-                        method: 'POST',
-                        url: 'https://'+ adminAppName + '.herokuapp.com/api/warriordash',
-                        data: data,
-                        headers: {"Content-Type":"application/json"}
-                    }).success(function(data, status, headers, config) {
-                        console.log('adminResponse',data);
-                        // redirect to the entry page
-                        $timeout(function () {
-                            $location.path('/thanks');
-                        }, (1*1000)); // timeout delay is ms
-                    }).error(function (data, status, headers, config){
-                        console.error('Save failed :-(');
-                    });
+                // Actually submit the entry to the admin
+                $http({
+                    method: 'POST',
+                    url: 'https://'+ adminAppName + '.herokuapp.com/api/warriordash',
+                    data: data,
+                    headers: {"Content-Type":"application/json"}
+                }).success(function(data, status, headers, config) {
+                    console.log('adminResponse',data);
+                    // redirect to the entry page
+                    $timeout(function () {
+                        $location.path('/thanks');
+                    }, (1*1000)); // timeout delay is ms
+                }).error(function (data, status, headers, config){
+                    console.error('Save failed :-(');
+                });
 
             });
 

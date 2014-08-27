@@ -1,7 +1,11 @@
 angular.module('unfiltered')
-    .controller('GateController',
-        ['$location', '$scope', '$rootScope',
-        function ($location, $scope, $rootScope) {
+    .controller('GateController', [
+        '$location', '$scope', '$rootScope', '$window',
+        function ($location, $scope, $rootScope, $window) {
+
+            $scope.$on('$viewContentLoaded', function (event) {
+                $window.ga('send', 'pageview', { page: $location.path() });
+            });
 
             this.months = [];
             this.days = [];
